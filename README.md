@@ -30,6 +30,7 @@
 ### 属性
 * name
 * paranoia_limit
+* image_id
 * 
 ### 隷下
 * Ability
