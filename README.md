@@ -1,24 +1,27 @@
-# README
+# モデル
+## Tragedy(惨劇)
+### 属性
+* name
+* 
+### 所持
+* Script
+* Board
+* Chara
+* 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  Script(脚本)
+### 属性
+* name
+* noof_days
+* noof_weeks
+* 
+### 所持
+* Incident
+* Script_Rule_Contract
+* 
+### 隷下
+* Summary
+* 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Rule(ルール)
+### 属性
