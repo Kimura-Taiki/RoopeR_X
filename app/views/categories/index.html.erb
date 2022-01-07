@@ -1,0 +1,19 @@
+<h1>Categories#index</h1>
+<p>Find me in app/views/categories/index.html.erb</p>
+
+<h1>分類追加フォーム</h1>
+<%= form_with model: @category, url: categories_path, method: :post, local: true do |c| %>
+  <h4>名称</h4>
+  <%= c.text_field :name %>
+  <%= c.submit "追加" %>
+<% end %>
+
+</hr>
+
+<div class = "container">
+  <% @categories.each do |c| %>
+    <div class = "row border">
+      <%= c.name %>
+    </div>
+  <% end %>
+</div>
