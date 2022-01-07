@@ -6,5 +6,6 @@ class CreateZaCategoryAttributions < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :za_category_attributions, [:za_id, :category_id], unique: true   #ここを追加
   end
 end

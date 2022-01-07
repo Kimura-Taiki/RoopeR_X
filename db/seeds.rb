@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Category
-Category.create(:name => "(null)")
+# Category.create(:name => "(null)")
 Category.create(:name => "学生")
 Category.create(:name => "少年")
 Category.create(:name => "少女")

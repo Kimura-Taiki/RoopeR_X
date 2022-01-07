@@ -31,24 +31,21 @@
 
 <hr>
 
-<div class = "container-fluid px-5">
-  <div class = "row">
-    <% @zas.each do |z| %>
-      <div class = "col-2 border">
-        <div class = "col">
-          <%= z.name %>(<%= z.id %>)
+<div class = "container">
+  <% @zas.each do |z| %>
+    <div class = "row border">
+      <div class = "col w-25">
+        <%= z.name %>(<%= z.id %>)
+        </br>
+        不安臨界<%= z.paranoia_limit %>
+        <% z.categories.each do |zc| %>
           </br>
-          不安臨界<%= z.paranoia_limit %>
-          </br>
-          <% z.categories.each do |zc| %>
-            <%= zc.name %>(<%= zc.id %>)
-          <% end %>
-        </div>
-        <div class = "col">
-          <%= attachment_image_tag z, :image, :fill, 128, 128 %>
-          <%#= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg"%>
-        </div>
+          <%= zc.name %>(<%= zc.id %>)
+        <% end %>
       </div>
-    <% end %>
-  </div>
+      <div class = "col w-25">
+        <%= attachment_image_tag z, :image %>
+      </div>
+    </div>
+  <% end %>
 </div>
