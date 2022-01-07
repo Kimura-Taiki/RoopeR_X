@@ -8,8 +8,25 @@ class ZasController < ApplicationController
   end
 
   def create
+    p "クリエイトへ来たぞー"
+    @c1 = params.require(:za)[:category1].to_i
+    @c2 = params.require(:za)[:category2].to_i
+    p @c1
+    p @c2
     @za = Za.new(za_params)
     if @za.save
+      if @c1 != 0
+        @zc_a = ZaCategoryAttribution.new
+        @zc_a.za_id = @za.id
+        @zc_a.category_id = @c1
+        @zc_a.save
+      end
+      if @c2 != 0
+        @zc_a = ZaCategoryAttribution.new
+        @zc_a.za_id = @za.id
+        @zc_a.category_id = @c2
+        @zc_a.save
+      end
       redirect_to zas_path
     else
       render :index

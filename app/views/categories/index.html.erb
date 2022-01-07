@@ -13,7 +13,7 @@
 <div class = "container">
   <% @categories.each do |c| %>
     <div class = "row border">
-      <%= c.name %>
+      <%= c.name %>(<%= c.id %>)
     </div>
   <% end %>
 </div>
