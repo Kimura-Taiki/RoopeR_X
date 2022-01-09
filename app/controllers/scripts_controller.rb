@@ -14,6 +14,11 @@ class ScriptsController < ApplicationController
   end
 
   def show
+    _id = params[:id].to_i
+    @script = Script.find(_id)
+    @pawns = Pawn.where(script_id: _id)
+    @pawn = Pawn.new
+    @zas = Za.all
   end
 
   def edit
