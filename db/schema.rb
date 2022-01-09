@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_083351) do
+ActiveRecord::Schema.define(version: 2022_01_09_115000) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scripts", force: :cascade do |t|
+    t.string "name"
+    t.integer "noof_days"
+    t.integer "noof_weeks"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
