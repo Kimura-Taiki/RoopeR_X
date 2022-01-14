@@ -1,2 +1,9 @@
 <h1>Positions#index</h1>
 <p>Find me in app/views/positions/index.html.erb</p>
+
+<h1>役職追加フォーム</h1>
+<%= form_with model: @position, class: "container", local: true do |p| %>
+  <div class = "form-group row">
+    <%#= p.label :name, "名称" %>
+  </div>
+<% end %>

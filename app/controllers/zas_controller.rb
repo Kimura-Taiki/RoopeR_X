@@ -36,7 +36,7 @@ class ZasController < ApplicationController
   def show
   end
 
-  def edit
+  def editst 
   end
 
   def update
