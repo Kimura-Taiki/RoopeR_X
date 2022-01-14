@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  rule_id: 1
+  position_id: 1
+
+two:
+  rule_id: 1
+  position_id: 1

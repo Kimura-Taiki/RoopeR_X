@@ -114,9 +114,10 @@
 ## Position(役職)
 ### 属性
 * name
+* max
 * refusal
 * unkillable
-* max
+* obstinate
 * 
 ### 隷下
 * Package_Position_Own
@@ -134,7 +135,6 @@
 * Rule_id
 * Position_id
 * 
-
 
 
 

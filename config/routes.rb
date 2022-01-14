@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'positions/index'
+  get 'positions/new'
+  get 'positions/show'
+  get 'positions/edit'
   root to: 'homes#home'
   resources :zas
   resources :categories, only: [:index, :create]
