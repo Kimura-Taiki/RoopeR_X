@@ -1,0 +1,17 @@
+  ja:
+    enums:
+      position:
+        refusal:
+          neg: "----"
+          optional: "友好無視"
+          mandatory: "絶対友好無視"
+        unkillable:
+          neg: "----"
+          undead: "不死"
+        obstinate:
+          neg: "----"
+          sinner: "犯人確定"
+      # order:
+      #   payment_method:
+      #     credit_card: "クレジットカード"
+      #     transfer: "銀行振込"
