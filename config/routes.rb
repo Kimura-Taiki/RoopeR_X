@@ -5,10 +5,11 @@ Rails.application.routes.draw do
   get 'positions/edit'
   root to: 'homes#home'
   resources :zas
-  resources :categories, only: [:index, :create]
+  resources :categories, only: [:index, :new, :create]
   resources :scripts do
     resources :pawns
   end
+  resources :positions
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

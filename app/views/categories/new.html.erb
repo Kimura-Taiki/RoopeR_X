@@ -1,0 +1,6 @@
+<h1>Categories#new</h1>
+<p>Find me in app/views/categories/new.html.erb</p>
+
+<h1>分類のCSV出力</h1>
+<!-- formatをcsvとして指定してcontrollerのrespond_toの処理を実行する -->
+<%= link_to "csvで出力する", new_category_path(format: :csv), class: "btn btn-info h4" %>
