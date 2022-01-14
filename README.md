@@ -68,7 +68,24 @@
 * Crime_id
 * 
 
+
+
+# 惨劇セット系統のモデル
+## Package(惨劇セット)
+### 属性
+* name
+* 
+### 隷下
+* Package_Crime_Own
+* Package_Rule_Own
+* Package_Position_Own
+* Script
+* 
+
 ## Crime(犯罪の構成要件)
+### 属性
+* name
+* 
 ### 隷下
 * Package_Crime_Own
 * 
@@ -76,19 +93,47 @@
 ## Package_Crime_Own(セット犯罪間交差テーブル) 
 ### 属性
 * Package_id
-* Cr
-
-## Package(惨劇セット)
-### 属性
-* 
-### 隷下
-* Package_Crime_Own
-* Script
+* Crime_id
 * 
 
 ## Rule(ルール)
 ### 属性
-*
+* name
+* 
+### 隷下
+* Package_Rule_Own
+* Rule_Position_Own
+* 
+
+## Package_Rule_Own(セットルール間交差テーブル)
+### 属性
+* Package_id
+* Rule_id
+* 
+
+## Position(役職)
+### 属性
+* name
+* refusal
+* unkillable
+* max
+* 
+### 隷下
+* Package_Position_Own
+* Rule_Position_Own
+* 
+
+## Package_Position_Own(セット役職間交差テーブル)
+## 属性
+* Package_id
+* Position_id
+* 
+
+## Rule_Position_Own(ルール役職間交差テーブル)
+## 属性
+* Rule_id
+* Position_id
+* 
 
 
 
