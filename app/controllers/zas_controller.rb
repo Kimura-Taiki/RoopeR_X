@@ -31,6 +31,16 @@ class ZasController < ApplicationController
     # end
   end
 
+  def category_x
+    @zc_as = ZaCategoryAttribution.all
+    respond_to do |fm|
+      fm.html
+      fm.csv do |csv|
+        send_zc_as_csv(@zc_as)
+      end
+    end
+  end
+
   def create
     p "クリエイトへ来たぞー"
     @c1 = params.require(:za)[:category1].to_i
@@ -90,6 +100,21 @@ class ZasController < ApplicationController
     send_data(csv_data, filename: "座の一覧.csv")
   end
 
+  def send_zc_as_csv(zc_as)
+    csv_data = CSV.generate do |csv|
+      column_names = %w(座id 分類id)
+      csv << column_names
+      zc_as.each do |zc|
+        column_values = [
+          zc.za_id,
+          zc.category_id,
+        ]
+        csv << column_values
+      end
+    end
+    send_data(csv_data, filename: "座分類交差テーブルの一覧.csv")
+  end
+
   # def send_posts_csv(posts)
   #   # CSV.generateとは、対象データを自動的にCSV形式に変換してくれるCSVライブラリの一種
   #   csv_data = CSV.generate do |csv|
@@ -104,7 +129,7 @@ class ZasController < ApplicationController
   #         post.title,
   #         post.body,
   #               ]
-  #     # csv << column_valueshは表の行に入る値を定義します。
+  #     # csv << column_valuesは表の行に入る値を定義します。
   #       csv << column_values
   #     end
   #   end

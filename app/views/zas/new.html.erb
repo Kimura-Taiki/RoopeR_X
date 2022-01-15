@@ -3,4 +3,5 @@
 
 <h1>座のCSV出力</h1>
 <!-- formatをcsvとして指定してcontrollerのrespond_toの処理を実行する -->
-<%= link_to "csvで出力する", new_za_path(format: :csv), class: "btn btn-info h4" %>
+<%= link_to "座の一覧をcsvで出力する", new_za_path(format: :csv), class: "btn btn-info h4" %>
+<%= link_to "座分類交差テーブルの一覧をcsvで出力する", category_x_new_za_path(format: :csv), class: "btn btn-info h4" %>
