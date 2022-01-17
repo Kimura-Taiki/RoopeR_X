@@ -61,3 +61,9 @@ require "csv"
 #   )
 # end
 
+# CSV.foreach('db/seeds/惨劇セットの一覧.csv', headers: true) do |row|
+#   Package.create(
+#     name: row['名称']
+#   )
+# end
+
