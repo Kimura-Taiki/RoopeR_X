@@ -16,6 +16,12 @@
         xy:
           rule_y: "ルールY"
           rule_x: "ルールX"
+      crime:
+        counter:
+          paranoia: "不安C"
+          intrigue: "暗躍C"
+          dead: "死体数"
+          goodwill: "友好C"
       # order:
       #   payment_method:
       #     credit_card: "クレジットカード"

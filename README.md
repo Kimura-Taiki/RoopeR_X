@@ -85,6 +85,8 @@
 ## Crime(犯罪の構成要件)
 ### 属性
 * name
+* shift
+* counter
 * 
 ### 隷下
 * Package_Crime_Own

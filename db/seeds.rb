@@ -53,3 +53,11 @@ require "csv"
 #   )
 # end
 
+# CSV.foreach('db/seeds/犯罪の一覧.csv', headers: true) do |row|
+#   Crime.create(
+#     name: row['名称'],
+#     shift: row['臨界補正'],
+#     counter: row['カウンター'].to_i
+#   )
+# end
+
