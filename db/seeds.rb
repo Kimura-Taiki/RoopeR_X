@@ -67,3 +67,24 @@ require "csv"
 #   )
 # end
 
+CSV.foreach('db/seeds/PackageRuleOwn.csv', headers: true) do |row|
+  PackageRuleOwn.create(
+    package_id: row['惨劇セットid'],
+    rule_id: row['ルールid']
+  )
+end
+
+# CSV.foreach('db/seeds/PackagePositionOwn.csv', headers: true) do |row|
+#   PackagePositionOwn.create(
+#     package_id: row['惨劇セットid'],
+#     position_id: row['役職id']
+#   )
+# end
+
+# CSV.foreach('db/seeds/PackageCrimeOwn.csv', headers: true) do |row|
+#   PackageCrimeOwn.create(
+#     package_id: row['惨劇セットid'],
+#     crime_id: row['犯罪id']
+#   )
+# end
+
