@@ -99,6 +99,7 @@
 ## Rule(ルール)
 ### 属性
 * name
+* xy
 * 
 ### 隷下
 * Package_Rule_Own

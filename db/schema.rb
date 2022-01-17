@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_14_054945) do
+ActiveRecord::Schema.define(version: 2022_01_17_062920) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -46,6 +46,13 @@ ActiveRecord::Schema.define(version: 2022_01_14_054945) do
   create_table "rule_position_owns", force: :cascade do |t|
     t.integer "rule_id"
     t.integer "position_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "rules", force: :cascade do |t|
+    t.string "name"
+    t.integer "xy"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -29,12 +29,27 @@ require "csv"
 #   )
 # end
 
-CSV.foreach('db/seeds/役職の一覧.csv', headers: true) do |row|
-  Position.create(
-    name: row['名称'],
-    max: row['最大'],
-    refusal: row['友好無視'].to_i,
-    unkillable: row['不死'].to_i,
-    obstinate: row['絶対犯'].to_i
-  )
-end
+# CSV.foreach('db/seeds/役職の一覧.csv', headers: true) do |row|
+#   Position.create(
+#     name: row['名称'],
+#     max: row['最大'],
+#     refusal: row['友好無視'].to_i,
+#     unkillable: row['不死'].to_i,
+#     obstinate: row['絶対犯'].to_i
+#   )
+# end
+
+# CSV.foreach('db/seeds/ルールの一覧.csv', headers: true) do |row|
+#   Rule.create(
+#     name: row['名称'],
+#     xy: row['字'].to_i
+#   )
+# end
+
+# CSV.foreach('db/seeds/ルール役職交差テーブルの一覧.csv', headers: true) do |row|
+#   RulePositionOwn.create(
+#     rule_id: row['ルールid'],
+#     position_id: row['役職id']
+#   )
+# end
+
