@@ -12,6 +12,10 @@
         obstinate:
           neg: "----"
           sinner: "犯人確定"
+      rule:
+        xy:
+          rule_y: "ルールY"
+          rule_x: "ルールX"
       # order:
       #   payment_method:
       #     credit_card: "クレジットカード"

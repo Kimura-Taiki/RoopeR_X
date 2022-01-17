@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'homes#home'
+   root to: 'homes#home'
   get "homes/csv", to: "homes#csv"
   resources :zas do
     get "category_x", on: :new
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   # Pawnリソースで浅いネストへ挑戦。コレクション系統とメンバー系統を分割し、:idを持たないコレクション系統のみネストさせる
   resources :positions
+  resources :rules
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
