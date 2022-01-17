@@ -7,3 +7,25 @@
     <%#= p.label :name, "名称" %>
   </div>
 <% end %>
+
+<hr>
+
+<div class = "container-fluid px-5">
+  <div class = "row">
+    <% @positions.each do |p| %>
+      <div class = "col-2 border">
+        <div class = "col">
+          <%= p.name %>(<%= p.id %>)
+          </br>
+          上限:<%= p.max %>
+          </br>
+          友好:<%= p.refusal_i18n %>
+          </br>
+          不死:<%= p.unkillable_i18n %>
+          </br>
+          犯人:<%= p.obstinate_i18n %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
