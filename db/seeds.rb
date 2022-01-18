@@ -73,7 +73,7 @@ CSV.foreach('db/seeds/PackageRuleOwn.csv', headers: true) do |row|
     rule_id: row['ルールid']
   )
 end
-
+###
 # CSV.foreach('db/seeds/PackagePositionOwn.csv', headers: true) do |row|
 #   PackagePositionOwn.create(
 #     package_id: row['惨劇セットid'],
