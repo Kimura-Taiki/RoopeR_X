@@ -67,8 +67,8 @@ require "csv"
 #   )
 # end
 
-# PackageRuleOwnの関連付けに'belongs_to :crime'が含まれていたので、それが原因かもしれない
-# やっぱダメだった
+# # PackageRuleOwnの関連付けに'belongs_to :crime'が含まれていたので、それが原因かもしれない
+# # やっぱダメだった
 
 # CSV.foreach('db/seeds/PackageRuleOwn.csv', headers: true) do |row|
 #   Paruo.create(
