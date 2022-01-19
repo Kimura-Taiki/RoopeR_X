@@ -24,15 +24,25 @@ class ScriptsController < ApplicationController
     @zas = Za.all
     @weeks = [["１週", 1], ["２週", 2], ["３週", 3], ["４週", 4], ["５週", 5], ["６週", 6], ["７週", 7], ["８週", 8], ["９週", 9], ]
     @days = [["１日", 1], ["２日", 2], ["３日", 3], ["４日", 4], ["５日", 5], ["６日", 6], ["７日", 7], ["８日", 8], ["９日", 9], ]
+    @packages = Package.all
   end
 
   def edit
   end
 
   def update
+    @script = Script.find(params[:id])
+    if @script.update(script_params)
+      redirect_to @script
+    else
+      render :show
+    end
   end
 
   def destroy
+    @script = Script.find(params[:id])
+    @script.destroy
+    redirect_to scripts_path
   end
 
   private

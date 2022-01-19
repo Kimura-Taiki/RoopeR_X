@@ -3,29 +3,30 @@
 
 <div>
   <h1 class = "text-center"><%= @script.name %></h1>
-  <%= form_with model: @script, class: "container-fluid px-5", local: true do |s| %>
-    <div class = "row border py-1">
-    <!--<div class = "form-group form-group-lg row border py-1">-->
-      <%= s.label :name, "脚本名", class: "col-2 control-label h3" %>
-      <%= s.text_field :name, class: "col-10 form-control input-lg" %>
-    </div>
-    <div class = "row border">
-    <!--<div class = "form-group form-group-large row border py-1">-->
-      <div class = "col border py-1">
-        <span class = "h3">期間&emsp;</span>
-        <%= s.select :noof_weeks, @weeks, {}, { id: "id", class: "btn btn-secondary dropdown-toggle" } %>
-        <span class = "h3">&ensp;/&ensp;</span>
-        <%= s.select :noof_days, @days, {}, { id: "id", class: "btn btn-secondary dropdown-toggle" } %>
-      </div>
-      <div class = "col border py-1">
-        <%= s.submit "更新", class: "btn btn-success" %>
-      </div>
-    </div>
-
-  <% end %>
-  <p class = "h3 text-center"><%= @script.noof_weeks %>週 / <%= @script.noof_days %>日</p>
+  <p class = "h3 text-center">
+    <%= @script.package.name %>&emsp;
+    <%= @script.noof_weeks %>週&thinsp;/&thinsp;<%= @script.noof_days %>日
+  </p>
 </div>
-<button type="button" class="btn btn-primary mb-12" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒追加フォーム</button>
+<div class = "row mb-1">
+  <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-edit-script-Modal">基本情報を編集</button>
+  <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
+  <%= link_to "削除", @script, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger col mx-2" %>
+</div>
+<%#= link_to user_path(user.id), "削除する", method: :delete, data: {confirm: "削除しますか？"} %>
+
+
+<hr>
+
+<div class = "container-fluid px-5">
+  <div class = "row">
+    <% for i in 1..@script.noof_days do %>
+      <div class = "col border">
+        <p>day<%= i %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <hr>
 
@@ -81,11 +82,7 @@
       <div class = "modal-header">
         <h4 class = "modal-title">脚本基本情報編集フォーム</h4>
       </div>
-      <%= form_with modal: @script, class: "container", local: true do |s| %>
-        <div class = "modal-body">
-          
-        </div>
-      <% end %>
+      <%= render "scripts/form", script: @script, packages: @packages, text: "更新" %>
     </div>
   </div>
 </div>
