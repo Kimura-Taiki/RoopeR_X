@@ -1,7 +1,10 @@
 class PositionsController < ApplicationController
-  def index
+  def index_all
     @positions = Position.all
     @position = Position.new
+  end
+
+  def index
   end
 
   def new

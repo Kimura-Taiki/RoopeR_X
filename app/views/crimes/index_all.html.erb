@@ -1,0 +1,30 @@
+<h1>Crimes#index_all</h1>
+<p>Find me in app/views/crimes/index_all.html.erb</p>
+
+<h1>犯罪追加フォーム</h1>
+
+<hr>
+
+<div class = "container-fluid px-5">
+  <div class = "row">
+    <% @crimes.each do |c| %>
+      <div class = "col-2 border">
+        <div class = "col">
+          <%= c.name %>(<%= c.id %>)
+          <% if c.shift != 0 %>
+            </br>
+            <% if c.shift > 0 %>
+              ＜不安臨界＋<%= c.shift %>＞
+            <% else %>
+              ＜不安臨界ー<%= c.shift*(-1) %>＞
+            <% end %>
+          <% end %>
+          <% if c.counter_before_type_cast != 0 %>
+            </br>
+            ＜<%= c.counter_i18n %>で発生判定＞
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

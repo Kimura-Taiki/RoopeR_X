@@ -13,10 +13,14 @@ Rails.application.routes.draw do
     resources :pawns, shallow: true
   end
   # Pawnリソースで浅いネストへ挑戦。コレクション系統とメンバー系統を分割し、:idを持たないコレクション系統のみネストさせる
-  resources :positions
-  resources :rules
-  resources :crimes
-  resources :packages
+  get "rules/all"     , to: "rules#index_all"     , as: "all_rules"
+  get "positions/all" , to: "positions#index_all" , as: "all_positions"
+  get "crimes/all"    , to: "crimes#index_all"    , as: "all_crimes"
+  resources :packages, only: [:index, :show] do
+    resources :rules, shallow: true, only: [:index, :show]
+    resources :positions, shallow: true, only: [:index, :show]
+    resources :crimes, shallow: true, only: [:index, :show]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

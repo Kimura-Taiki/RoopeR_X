@@ -67,14 +67,9 @@ require "csv"
 #   )
 # end
 
-# CSV.foreach('db/seeds/PackageRuleOwn.csv', headers: true) do |row|
-#   PackageRuleOwn.create(
-#     package_id: row['惨劇セットid'],
-#     rule_id: row['ルールid']
-#   )
-# end
+# PackageRuleOwnの関連付けに'belongs_to :crime'が含まれていたので、それが原因かもしれない
+# やっぱダメだった
 
-# モデル名をParuoに変えてやってみよう
 # CSV.foreach('db/seeds/PackageRuleOwn.csv', headers: true) do |row|
 #   Paruo.create(
 #     package_id: row['惨劇セットid'],

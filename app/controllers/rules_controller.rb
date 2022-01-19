@@ -1,7 +1,10 @@
 class RulesController < ApplicationController
-  def index
+  def index_all
     @rules = Rule.all
     @rule = Rule.new
+  end
+
+  def index
   end
 
   def new

@@ -1,7 +1,10 @@
 class CrimesController < ApplicationController
-  def index
+  def index_all
     @crimes = Crime.all
     @crime = Crime.new
+  end
+
+  def index
   end
 
   def new

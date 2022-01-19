@@ -1,0 +1,23 @@
+<h1>Rules#index_all</h1>
+<p>Find me in app/views/rules/index_all.html.erb</p>
+
+<h1>ルール追加フォーム</h1>
+
+<hr>
+
+<div class = "container-fluid px-5">
+  <div class = "row">
+    <% @rules.each do |r| %>
+      <div class = "col-2 border">
+        <div class = "col">
+          <%= r.name %>(<%= r.id %>)
+          </br>
+          <% r.positions.each do |rp| %>
+            </br>
+            <%= rp.name %>(<%= rp.id %>)
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

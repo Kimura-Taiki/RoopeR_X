@@ -1,4 +1,4 @@
 class PackageRuleOwn < ApplicationRecord
   belongs_to :package
-  belongs_to :crime
+  belongs_to :rule
 end
