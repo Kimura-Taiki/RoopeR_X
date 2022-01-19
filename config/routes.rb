@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   # resources :pawns, only: [:show, :edit, :update, :destroy]
   resources :scripts do
     resources :pawns, shallow: true
+    resources :incidents, shallow: true
   end
   # Pawnリソースで浅いネストへ挑戦。コレクション系統とメンバー系統を分割し、:idを持たないコレクション系統のみネストさせる
   get "rules/all"     , to: "rules#index_all"     , as: "all_rules"
