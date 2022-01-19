@@ -1,6 +1,7 @@
 class Package < ApplicationRecord
   # has_many :package_rule_owns
   # has_many :rules, through: :package_rule_owns
+  has_many :scripts
   has_many :paruos
   has_many :rules, through: :paruos
   has_many :package_position_owns

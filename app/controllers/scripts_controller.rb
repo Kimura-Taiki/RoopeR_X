@@ -2,6 +2,7 @@ class ScriptsController < ApplicationController
   def index
     @scripts = Script.all
     @script = Script.new
+    @packages = Package.all
   end
 
   def create
@@ -32,6 +33,6 @@ class ScriptsController < ApplicationController
 
   private
   def script_params
-    params.require(:script).permit(:name, :noof_days, :noof_weeks)
+    params.require(:script).permit(:name, :package_id, :noof_days, :noof_weeks)
   end
 end

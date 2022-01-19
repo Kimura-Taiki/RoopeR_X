@@ -8,6 +8,10 @@
     <%= s.text_field :name %>
   </div>
   <div class = "form-group row">
+    <%= s.label :package_id, "惨劇セット", class: "h4 col-2" %>
+    <%= s.collection_select :package_id, @packages, :id, :name %>
+  </div>
+  <div class = "form-group row">
     <%= s.label :noof_days, "日数", class: "h4 col-2" %>
     <%= s.text_field :noof_days %>
   </div>
