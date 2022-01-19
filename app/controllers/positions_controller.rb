@@ -5,6 +5,8 @@ class PositionsController < ApplicationController
   end
 
   def index
+    @package = Package.find(params[:package_id])
+    @positions = @package.positions
   end
 
   def new

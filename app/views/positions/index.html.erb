@@ -1,2 +1,24 @@
 <h1>Positions#index</h1>
 <p>Find me in app/views/positions/index.html.erb</p>
+
+<h1><%= @package.name %>の役職一覧</h1>
+
+<div class = "container-fluid px-5">
+  <div class = "row">
+    <% @positions.each do |p| %>
+      <div class = "col-2 border">
+        <div class = "col">
+          <%= p.name %>(<%= p.id %>)
+          </br>
+          上限:<%= p.max %>
+          </br>
+          友好:<%= p.refusal_i18n %>
+          </br>
+          不死:<%= p.unkillable_i18n %>
+          </br>
+          犯人:<%= p.obstinate_i18n %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

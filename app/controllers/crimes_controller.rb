@@ -5,6 +5,8 @@ class CrimesController < ApplicationController
   end
 
   def index
+    @package = Package.find(params[:package_id])
+    @crimes = @package.crimes
   end
 
   def new
