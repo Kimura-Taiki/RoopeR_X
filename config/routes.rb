@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root to: 'homes#home'
   get "homes/csv", to: "homes#csv"
+  get "homes/jspull"
   resources :zas do
     get "category_x", on: :new
   end

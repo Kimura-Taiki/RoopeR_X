@@ -103,6 +103,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_052645) do
 
   create_table "scripts", force: :cascade do |t|
     t.string "name"
+    t.integer "package_id"
     t.integer "noof_days"
     t.integer "noof_weeks"
     t.datetime "created_at", null: false

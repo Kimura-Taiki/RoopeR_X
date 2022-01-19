@@ -18,3 +18,14 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+const select = document.querySelector("#select")
+select.addEventListener("change", () => {
+  const b = document.querySelector(".b")
+  if (select.value === "B") {
+    b.style.visibility = "visible"
+  } else {
+    b.style.visibility = "hidden"
+  }
+})
