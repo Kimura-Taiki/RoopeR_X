@@ -13,8 +13,6 @@
   <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
   <%= link_to "削除", @script, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger col mx-2" %>
 </div>
-<%#= link_to user_path(user.id), "削除する", method: :delete, data: {confirm: "削除しますか？"} %>
-
 
 <hr>
 
@@ -51,41 +49,27 @@
 </div>
 
 <!--以下はモーダル部分、これは駒の追加-->
-<div class="modal fade" id="scripts_show-add-pawn-Modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">駒追加フォーム</h4>
+<%= render "scripts/modal_header", id_class: "scripts_show-add-pawn-Modal", text: "駒追加フォーム" %>
+  <%= form_with model: [@script, @pawn], url: script_pawns_path(@script), method: :post, class: "container", local: true do |p| %>
+    <div class = "modal-body">
+      <div class = "form-group row">
+        <%= p.label :za_id, "座ID", class: "h4 col-2" %>
+        <%= p.collection_select :za_id, @zas, :id, :name %>
       </div>
-      <%= form_with model: [@script, @pawn], url: script_pawns_path(@script), method: :post, class: "container", local: true do |p| %>
-        <div class = "modal-body">
-          <div class = "form-group row">
-            <%= p.label :za_id, "座ID", class: "h4 col-2" %>
-            <%= p.collection_select :za_id, @zas, :id, :name %>
-          </div>
-        </div>
-        <div class = "modal-footer">
-          <div class = "form-group row">
-            <button type = "button" class = "btn btn-secondary px-5 mr-3" data-dismiss = "modal">閉じる</button>
-            <%= p.submit "追加", class: "btn btn-success px-5" %>
-          </div>
-        </div>
-      <% end %>
     </div>
-  </div>
-</div>
+    <div class = "modal-footer">
+      <div class = "form-group row">
+        <button type = "button" class = "btn btn-secondary px-5 mr-3" data-dismiss = "modal">閉じる</button>
+        <%= p.submit "追加", class: "btn btn-success px-5" %>
+      </div>
+    </div>
+  <% end %>
+<% render "scripts/modal_footer" %>
 
 <!--脚本基本情報編集用のモーダル-->
-<div class = "modal fade" id = "scripts_show-edit-script-Modal" tabindex = "-1" role = "dialog" aria-labelledby = "basicModal" aria-hidden = "true">
-  <div class = "modal-dialog">
-    <div class = "modal-content">
-      <div class = "modal-header">
-        <h4 class = "modal-title">脚本基本情報編集フォーム</h4>
-      </div>
-      <%= render "scripts/form", script: @script, packages: @packages, text: "更新" %>
-    </div>
-  </div>
-</div>
+<%= render "scripts/modal_header", id_class: "scripts_show-edit-script-Modal", text: "脚本基本情報編集フォーム" %>
+  <%= render "scripts/form", script: @script, packages: @packages, text: "更新" %>
+<%= render "scripts/modal_footer" %>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
