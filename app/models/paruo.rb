@@ -1,0 +1,2 @@
+class Paruo < ApplicationRecord
+end

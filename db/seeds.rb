@@ -74,6 +74,14 @@ require "csv"
 #   )
 # end
 
+# モデル名をParuoに変えてやってみよう
+# CSV.foreach('db/seeds/PackageRuleOwn.csv', headers: true) do |row|
+#   Paruo.create(
+#     package_id: row['惨劇セットid'],
+#     rule_id: row['ルールid']
+#   )
+# end
+
 # CSV.foreach('db/seeds/PackagePositionOwn.csv', headers: true) do |row|
 #   PackagePositionOwn.create(
 #     package_id: row['惨劇セットid'],
