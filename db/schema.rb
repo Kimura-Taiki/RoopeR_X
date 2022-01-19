@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_052645) do
   create_table "pawns", force: :cascade do |t|
     t.integer "script_id"
     t.integer "za_id"
-    t.integer "role_id"
+    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

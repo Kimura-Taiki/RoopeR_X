@@ -53,7 +53,7 @@
 * 
 * Script_id
 * Za_id
-* Role_id
+* Position_id
 * 
 ### 隷下
 * Incident
