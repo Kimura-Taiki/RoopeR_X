@@ -22,6 +22,12 @@
     <% for i in 1..@script.noof_days do %>
       <div class = "col border">
         <p>day<%= i %></p>
+        <% if @array[i] %>
+          事件があるねー
+        <% else %>
+          <% @incident.day = i %>
+          <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-add-incident-Modal">事件を追加</button>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -72,7 +78,34 @@
       </div>
     </div>
   <% end %>
-<% render "scripts/modal_footer" %>
+<%= render "scripts/modal_footer" %>
+
+<!--事件追加用のモーダル-->
+<%= render "scripts/modal_header", id_class: "scripts_show-add-incident-Modal", text: "事件追加フォーム" %>
+  <%= form_with modal: [@script, @incident], class: "container", local: true do |i| %>
+    <div class = "modal-body">
+      <div class = "form-group row">
+        <%= i.label :day, "日付", class: "h4 col-2" %>
+        <%#= i.select :day, @days, {}, { class: "btn btn-primary dropdown-toggle" } %>
+        <%= i.text_field :day %>
+      </div>
+      <div class = "form-group row">
+        <%= i.label :crime_id, "犯罪ID", class: "h4 col-2" %>
+        <%= i.collection_select :crime_id, @crimes, :id, :name %>
+      </div>
+      <div class = "form-group row">
+        <%= i.label :pawn_id, "犯人", class: "h4 col-2" %>
+        <%= i.collection_select :pawn_id, @pawns, :id, :pawn_name %>
+      </div>
+    </div>
+    <div class = "modal-footer">
+      <div class = "form-group row">
+        <button type = "button" class = "btn btn-secondary px-5 mr-3" data-dismiss = "modal">閉じる</button>
+        <%= i.submit "追加", class: "btn btn-success px-5" %>
+      </div>
+    </div>
+  <% end %>
+<%= render "scripts/modal_footer" %>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
