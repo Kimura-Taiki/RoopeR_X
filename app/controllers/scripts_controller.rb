@@ -22,10 +22,7 @@ class ScriptsController < ApplicationController
     @zas = Za.all
     @incidents = @script.incidents
     @array = Array[nil]
-    for i in 1..@script.noof_days do
-      @array.push(@incidents.find_by(day: i))
-    end
-    p @array
+    (1..@script.noof_days).each{|i| @array.push(@incidents.find_by(day: i))}
     @incident = Incident.new
     @crimes = @script.package.crimes
     @weeks = [["１週", 1], ["２週", 2], ["３週", 3], ["４週", 4], ["５週", 5], ["６週", 6], ["７週", 7], ["８週", 8], ["９週", 9], ]

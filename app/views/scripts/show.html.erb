@@ -8,39 +8,24 @@
     <%= @script.noof_weeks %>週&thinsp;/&thinsp;<%= @script.noof_days %>日
   </p>
 </div>
-<div class = "row mb-1">
-  <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-edit-script-Modal">基本情報を編集</button>
-  <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
-  <%= link_to "削除", @script, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger col mx-2" %>
-</div>
-
-<hr>
-
-<!--日程表。事件モデルや駒モデルと連携する-->
-<div class = "container-fluid px-5">
-  <div class = "row">
-    <% for i in 1..@script.noof_days do %>
-      <div class = "col border">
-        <p>day<%= i %></p>
-        <% if @array[i] %>
-          事件があるねー
-        <% else %>
-          <% @incident.day = i %>
-          <button type="button" class="btn btn-primary col mx-2" data-toggle="modal" data-target="#scripts_show-add-incident-Modal">事件を追加</button>
-        <% end %>
-      </div>
-    <% end %>
-  </div>
+<div class = "row px-3">
+  <button type="button" class="btn btn-primary col m-2 py-1" data-toggle="modal" data-target="#scripts_show-edit-script-Modal">基本情報を編集</button>
+  <button type="button" class="btn btn-primary col m-2 " data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
+  <button type="button" class="btn btn-primary col m-2" data-toggle="modal" data-target="#scripts_show-add-incident-Modal">事件を追加</button>
+  <%= link_to "削除", @script, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger col m-2" %>
 </div>
 
 <hr>
 
 <!--駒一覧-->
 <div class = "container-fluid px-5">
+  <p class = "h4 text-center">駒一覧</p>
   <div class = "row">
     <% @pawns.each do |p| %>
-      <div class = "col-2 border">
+      <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
         <%= p.za.name %>
+        </br>
+        <%= p.position.name %>
         </br>
         <%= attachment_image_tag p.za, :image, :fill, 128, 128 %>
       </div>
@@ -50,12 +35,27 @@
 
 <hr>
 
-<!--事件一覧。駒モデルと連携する-->
+<!--日程表。事件モデルや駒モデルと連携する-->
 <div class = "container-fluid px-5">
+  <p class = "h4 text-center">事件予定</p>
   <div class = "row">
-
+    <% for i in 1..@script.noof_days do %>
+      <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
+        <p>day<%= i %></p>
+        <% if @array[i] %>
+          <%= @array[i].crime.name %>
+          </br>
+          <%= @array[i].pawn.za.name %>
+          </br>
+          <%= attachment_image_tag @array[i].pawn.za, :image, :fill, 128, 128 %>
+        <% else %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 </div>
+
+<div class = "my-3"></div>
 
 <!--脚本基本情報編集用のモーダル-->
 <%= render "scripts/modal_header", id_class: "scripts_show-edit-script-Modal", text: "脚本基本情報編集フォーム" %>
@@ -82,12 +82,11 @@
 
 <!--事件追加用のモーダル-->
 <%= render "scripts/modal_header", id_class: "scripts_show-add-incident-Modal", text: "事件追加フォーム" %>
-  <%= form_with modal: [@script, @incident], class: "container", local: true do |i| %>
+  <%= form_with modal: [@script, @incident], url: script_incidents_path(@script), class: "container", local: true do |i| %>
     <div class = "modal-body">
       <div class = "form-group row">
         <%= i.label :day, "日付", class: "h4 col-2" %>
-        <%#= i.select :day, @days, {}, { class: "btn btn-primary dropdown-toggle" } %>
-        <%= i.text_field :day %>
+        <%= i.select :day, @days, {}, { class: "btn btn-primary dropdown-toggle" } %>
       </div>
       <div class = "form-group row">
         <%= i.label :crime_id, "犯罪ID", class: "h4 col-2" %>

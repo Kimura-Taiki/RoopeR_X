@@ -3,16 +3,15 @@ class IncidentsController < ApplicationController
   end
 
   def new
+  end
+
+  def create
     @incident = Incident.new(incident_params)
     @incident.script_id = params[:script_id].to_i
-    
-    @pawn = Pawn.new(pawn_params)
-    @pawn.script_id = params[:script_id].to_i
-    @pawn.position_id = 1
-    if @pawn.save
-      redirect_to @pawn.script
+    if @incident.save
+      redirect_to @incident.script
     else
-      render "scripts/#{@pawn.script_id}"
+      render "scripts/#{params[:script_id]}"
     end
   end
 
@@ -21,9 +20,10 @@ class IncidentsController < ApplicationController
 
   def edit
   end
-  
+
   private
   def incident_params
-    params.require(:incident).permit(:day, :script_id, :pawn_id, :crime_id)
+    # params.require(:incident).permit(:day, :script_id, :pawn_id, :crime_id)
+    params.permit(:day, :script_id, :pawn_id, :crime_id)
   end
 end
