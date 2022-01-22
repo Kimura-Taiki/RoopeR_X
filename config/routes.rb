@@ -6,10 +6,6 @@ Rails.application.routes.draw do
     get "category_x", on: :new
   end
   resources :categories, only: [:index, :new, :create]
-  # resources :scripts do
-  #   resources :pawns, only: [:index, :new, :create]
-  # end
-  # resources :pawns, only: [:show, :edit, :update, :destroy]
   resources :scripts do
     resources :pawns, shallow: true
     resources :incidents, shallow: true
