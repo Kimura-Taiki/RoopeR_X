@@ -2,7 +2,7 @@
 <p>Find me in app/views/scripts/show.html.erb</p>
 
 <div>
-  <h1 class = "text-center"><%= @script.name %></h1>
+  <h1 class = "text-center" id = "Tuika"><%= @script.name %></h1>
   <p class = "h3 text-center">
     <%= @script.package.name %>&emsp;
     <%= @script.noof_weeks %>週&thinsp;/&thinsp;<%= @script.noof_days %>日
@@ -22,21 +22,15 @@
   <p class = "h4 text-center">駒一覧</p>
   <div class = "row">
     <% @pawns.each do |p| %>
-      <%#= link_to edit_pawn_path(p), class: "col-6 col-sm-4 col-md-3 col-lg-2 border" do %>
-      <%# @pawn = p %>
-      <%# p "@pawnは" %>
-      <%# p @pawn %>
-      <%# p "です" %>
-      <%#= form_with model: @pawn_neo do |p| %>
-        <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
-          <%= p.za.name %>
-          </br>
-          <%= p.position.name %>
-          </br>
-          <%= attachment_image_tag p.za, :image, :fill, 128, 128 %>
-        </div>
-      <%# end %>
-      <%# end %>
+      <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
+        <%= p.za.name %>
+        </br>
+        <%= p.position.name %>
+        </br>
+        <%= attachment_image_tag p.za, :image, :fill, 128, 128 %>
+        </br>
+        <button type="button" class="btn btn-primary col m-2 edit_pawn-class" data-toggle="modal" data-target="#scripts_show-edit-pawn-Modal">駒を編集</button>
+      </div>
     <% end %>
   </div>
 </div>
@@ -120,8 +114,40 @@
   <% end %>
 <%= render "scripts/modal_footer" %>
 
+<!--駒の編集モーダル-->
+<%= render "scripts/modal_header", id_class: "scripts_show-edit-pawn-Modal", text: "駒編集フォーム" %>
+  <%= form_with model: [@script, @pawn], url: script_pawns_path(@script), method: :post, class: "container", local: true do |p| %>
+    <div class = "modal-body">
+      <div class = "form-group row">
+        <%= p.label :za_id, "座ID", class: "h4 col-2" %>
+        <%= p.collection_select :za_id, @zas, :id, :name %>
+      </div>
+    </div>
+    <div class = "modal-body">
+      <div class = "form-group row">
+        <%= p.label :position_id, "役職ID", class: "h4 col-2" %>
+        <%= p.collection_select :position_id, @positions, :id, :name %>
+      </div>
+    </div>
+    <div class = "modal-footer">
+      <div class = "form-group row">
+        <button type = "button" class = "btn btn-secondary px-5 mr-3" data-dismiss = "modal">閉じる</button>
+        <%= p.submit "追加", class: "btn btn-success px-5" %>
+      </div>
+    </div>
+  <% end %>
+<%= render "scripts/modal_footer" %>
+
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<!--参照：https://www.inet-solutions.jp/technology/jquery-ajax-bootstrap/-->
+<!--slim版だと'Uncaught TypeError: $.ajax is not a function'エラーが起こるようなので全量版に修正-->
+<!--<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>-->
+<!--3.3.1の全量版が見つかったので全量版に変更-->
+<!--<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>-->
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>

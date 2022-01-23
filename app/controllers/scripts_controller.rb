@@ -32,6 +32,11 @@ class ScriptsController < ApplicationController
     p "----------フィニッシュ----------"
   end
 
+  def edit_pawn
+    p "edit_pawnへ来たぞー！"
+    # @pawn = Pawn.find(params[:id])
+  end
+
   def edit
   end
 
