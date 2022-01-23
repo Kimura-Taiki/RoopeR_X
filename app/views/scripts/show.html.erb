@@ -22,14 +22,20 @@
   <p class = "h4 text-center">駒一覧</p>
   <div class = "row">
     <% @pawns.each do |p| %>
-      <%= link_to edit_pawn_path(p), class: "col-6 col-sm-4 col-md-3 col-lg-2 border" do %>
-      <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
-        <%= p.za.name %>
-        </br>
-        <%= p.position.name %>
-        </br>
-        <%= attachment_image_tag p.za, :image, :fill, 128, 128 %>
-      </div>
+      <%#= link_to edit_pawn_path(p), class: "col-6 col-sm-4 col-md-3 col-lg-2 border" do %>
+      <%# @pawn = p %>
+      <%# p "@pawnは" %>
+      <%# p @pawn %>
+      <%# p "です" %>
+      <%#= form_with model: @pawn_neo do |p| %>
+        <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
+          <%= p.za.name %>
+          </br>
+          <%= p.position.name %>
+          </br>
+          <%= attachment_image_tag p.za, :image, :fill, 128, 128 %>
+        </div>
+      <%# end %>
       <%# end %>
     <% end %>
   </div>
@@ -71,6 +77,12 @@
       <div class = "form-group row">
         <%= p.label :za_id, "座ID", class: "h4 col-2" %>
         <%= p.collection_select :za_id, @zas, :id, :name %>
+      </div>
+    </div>
+    <div class = "modal-body">
+      <div class = "form-group row">
+        <%= p.label :position_id, "役職ID", class: "h4 col-2" %>
+        <%= p.collection_select :position_id, @positions, :id, :name %>
       </div>
     </div>
     <div class = "modal-footer">

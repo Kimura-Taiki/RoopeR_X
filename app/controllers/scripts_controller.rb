@@ -17,9 +17,10 @@ class ScriptsController < ApplicationController
   def show
     p "----------スタート----------"
     @script = Script.find(params[:id])
-    @pawns = @script.pawns.eager_load(:za)
+    @pawns = @script.pawns.eager_load(:za, :position)
     @pawn = Pawn.new
     @zas = Za.all
+    @positions = @script.package.positions
     @incidents = @script.incidents
     @array = Array[nil]
     (1..@script.noof_days).each{|i| @array.push(@incidents.find_by(day: i))}

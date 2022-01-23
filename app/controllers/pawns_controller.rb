@@ -8,7 +8,6 @@ class PawnsController < ApplicationController
   def create
     @pawn = Pawn.new(pawn_params)
     @pawn.script_id = params[:script_id].to_i
-    @pawn.position_id = 1
     if @pawn.save
       redirect_to @pawn.script
     else
