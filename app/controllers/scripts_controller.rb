@@ -19,6 +19,7 @@ class ScriptsController < ApplicationController
     @script = Script.find(params[:id])
     @pawns = @script.pawns.eager_load(:za, :position)
     @pawn = Pawn.new
+    @pawn_1 = Pawn.find(1)
     @zas = Za.all
     @positions = @script.package.positions
     @incidents = @script.incidents
@@ -30,11 +31,6 @@ class ScriptsController < ApplicationController
     @days = [["１日", 1], ["２日", 2], ["３日", 3], ["４日", 4], ["５日", 5], ["６日", 6], ["７日", 7], ["８日", 8], ["９日", 9], ]
     @packages = Package.all
     p "----------フィニッシュ----------"
-  end
-
-  def edit_pawn
-    p "edit_pawnへ来たぞー！"
-    # @pawn = Pawn.find(params[:id])
   end
 
   def edit

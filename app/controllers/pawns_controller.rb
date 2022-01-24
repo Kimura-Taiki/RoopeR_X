@@ -21,8 +21,21 @@ class PawnsController < ApplicationController
   def edit
   end
 
+  def update
+    @req = params.require(:pawn)
+    @pawn = Pawn.find(@req[:id])
+    @pawn.update(pawn_params)
+    redirect_to script_path(@pawn.script)
+  end
+
+  def destroy
+    p "destroy"
+    p params
+    p params[:id]
+  end
+
   private
   def pawn_params
-    params.require(:pawn).permit(:script_id, :za_id, :position_id)
+    params.require(:pawn).permit(:id, :script_id, :za_id, :position_id)
   end
 end

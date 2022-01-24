@@ -91,3 +91,11 @@ CSV.foreach('db/seeds/PackageCrimeOwn.csv', headers: true) do |row|
   )
 end
 
+# Pawnの番兵  ※一時的にscript_idの関連付けを削除しないと
+# translation missing: ja.activerecord.errors.messages.record_invalid
+# の、エラーが起きる
+Pawn.create!(
+  script_id: 0,
+  za_id: 35,
+  position_id: 1
+)

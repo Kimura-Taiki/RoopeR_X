@@ -1,0 +1,22 @@
+<%#= form_with model: model, url: url, method: method, class: "container", local: true do |p| %>
+  <div class = "modal-body">
+    <%= p.hidden_field :id, class: "pawn_dayo" %>
+    <div class = "form-group row">
+      <%= p.label :za_id, "座ID", class: "h4 col-2" %>
+      <%= p.collection_select :za_id, @zas, :id, :name, { }, { class: "za_dayo" } %>
+    </div>
+    <div class = "form-group row">
+      <%= p.label :position_id, "役職ID", class: "h4 col-2" %>
+      <%= p.collection_select :position_id, @positions, :id, :name, { }, { class: "position_dayo" } %>
+    </div>
+  </div>
+  <div class = "modal-footer">
+    <div class = "form-group row">
+      <button type = "button" class = "btn btn-secondary px-4 m-2" data-dismiss = "modal">閉じる</button>
+      <%= p.submit text, class: "btn btn-success px-4 m-2" %>
+      <% if text == "更新" %>
+        <%#= link_to "削除", pawn_path(@pawn), method: :delete, data: { confirm: "【確認】この駒を削除してもよろしいですか？" }, class: "btn btn-danger px-4 m-2" %>
+      <% end %>
+    </div>
+  </div>
+<%# end %>

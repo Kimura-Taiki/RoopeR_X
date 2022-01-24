@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # 脚本系統のルーティング
   namespace :scripts do
     resources :pawn_edits, only: :index, defaults: { format: :json }
+    resources :pawn_novels, only: :index, defaults: { format: :json }
   end
   resources :scripts do
     resources :pawns, shallow: true

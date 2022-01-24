@@ -37,8 +37,14 @@ $(function(){
   });
 });
 
-
 $(function() {
+  $(".novel_pawn-class").click(function() {
+    console.log("neo_novelsへ来たぞー")
+    $(".pawn_dayo").val()
+    $(".za_dayo").val(0)
+    $(".position_dayo").val(0)
+  });
+
   $(".edit_pawn-class").click(function(){
     const pawn_id = $(this).data("pawn");
     console.log("pawn_idは"+pawn_id+"です");
@@ -47,19 +53,19 @@ $(function() {
       type: "GET",
       data: { id: pawn_id },
       datatype: "json"
-      // data: { id: 99 }
     })
     .done(function(data){ // dataにはレスポンスされたデータが入る
       //通信に成功した際の処理
       console.log(data)
+      // $("h4.modal-title").text("駒編集フォーム")
       $(data).each(function(i,pawn) {
         $(".pawn_dayo").val(pawn.id)
         $(".za_dayo").val(pawn.za_id)
         $(".position_dayo").val(pawn.position_id)
+        // $("#scripts_show-delete-pawn-Button").href("/pawns/"+pawn.id)
+        $("#scripts_show-delete-pawn-Button").attr("href", "/pawns/"+pawn.id)
+        // $("#mylink").attr("href", "http://example.com/")
       });
-      // $(".pawn_dayo").val(99)
-      // (modal).find('.modal-body input.pawn_dayo').val(20) //inputタグにも表示
-      // (modal).find('.modal-body select.za_dayo').val(30) //inputタグにも表示
     })
   });
 })
@@ -75,10 +81,3 @@ $(function() {
 //   // modal.find('.modal-title').text('New message to ' + recipient) //モーダルのタイトルに値を表示
 //   // modal.find('.modal-body input#recipient-name').val(recipient) //inputタグにも表示
 // });
-
-$(document).ready(function () {
-  console.log("Hello world");
-});
-
-// var title = "javascriptが使えました";
-// alert(title);
