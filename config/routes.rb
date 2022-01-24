@@ -12,13 +12,13 @@ Rails.application.routes.draw do
   # 脚本系統のルーティング
   namespace :scripts do
     resources :pawn_edits, only: :index, defaults: { format: :json }
-    resources :pawn_novels, only: :index, defaults: { format: :json }
+    # resources :pawn_novels, only: :index, defaults: { format: :json }
   end
   resources :scripts do
     resources :pawns, shallow: true
     resources :incidents, shallow: true
   end
-  get "scripts/edit_pawn"
+  # get "scripts/edit_pawn"
 
   # 惨劇セット系統のルーティング
   # Pawnリソースで浅いネストへ挑戦。コレクション系統とメンバー系統を分割し、:idを持たないコレクション系統のみネストさせる

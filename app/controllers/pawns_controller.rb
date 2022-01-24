@@ -32,6 +32,11 @@ class PawnsController < ApplicationController
     p "destroy"
     p params
     p params[:id]
+    @pawn = Pawn.find(params[:id])
+    p @pawn
+    @script = @pawn.script
+    @pawn.destroy
+    redirect_to @script
   end
 
   private
