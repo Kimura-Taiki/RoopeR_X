@@ -2,15 +2,24 @@ Rails.application.routes.draw do
   root to: 'homes#home'
   get "homes/csv", to: "homes#csv"
   get "homes/jspull"
+
+  # 座系統のルーティング
   resources :zas do
     get "category_x", on: :new
   end
   resources :categories, only: [:index, :new, :create]
+
+  # 脚本系統のルーティング
+  namespace :scripts do
+    resources :pawn_edits, only: :index, defaults: { format: :json }
+  end
   resources :scripts do
     resources :pawns, shallow: true
     resources :incidents, shallow: true
   end
   get "scripts/edit_pawn"
+
+  # 惨劇セット系統のルーティング
   # Pawnリソースで浅いネストへ挑戦。コレクション系統とメンバー系統を分割し、:idを持たないコレクション系統のみネストさせる
   get "rules/all"     , to: "rules#index_all"     , as: "all_rules"
   get "positions/all" , to: "positions#index_all" , as: "all_positions"
