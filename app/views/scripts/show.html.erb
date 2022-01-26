@@ -84,7 +84,7 @@
 
 <!--事件追加用のモーダル-->
 <%= render "scripts/modal_header", id_class: "scripts_show-add-incident-Modal", text: "事件追加フォーム" %>
-  <%= form_with modal: [@script, @incident], url: script_incidents_path(@script), class: "container", local: true do |i| %>
+  <%= form_with model: [@script, @incident], url: script_incidents_path(@script), class: "container", local: true do |i| %>
     <div class = "modal-body">
       <div class = "form-group row">
         <%= i.label :day, "日付", class: "h4 col-2" %>

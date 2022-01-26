@@ -68,6 +68,19 @@ $(function() {
       });
     })
   });
+  
+  $(".edit_incident-class").click(function() {
+    const incident_id = $(this).data("incident");
+    $.ajax({
+      url: "incident_edits",
+      type: "GET",
+      data: {id: incident_id},
+      datatype: "json"
+    })
+    .done(function(data){
+      $(data).each(function(i,incident){})
+    })
+  })
 })
 
 // $("#scripts_show-edit-pawn-Modal").on('show.bs.modal', function (event) {

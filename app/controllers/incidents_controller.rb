@@ -23,7 +23,7 @@ class IncidentsController < ApplicationController
 
   private
   def incident_params
-    # params.require(:incident).permit(:day, :script_id, :pawn_id, :crime_id)
-    params.permit(:day, :script_id, :pawn_id, :crime_id)
+    params.require(:incident).permit(:day, :script_id, :pawn_id, :crime_id)
+    # params.permit(:day, :script_id, :pawn_id, :crime_id)
   end
 end
