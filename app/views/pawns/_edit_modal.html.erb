@@ -1,24 +1,17 @@
 <%= render "scripts/modal_header", id_class: "scripts_show-edit-pawn-Modal", text: "駒編集フォーム" %>
   <%= form_with model: @pawn_1, class: "container", local: true do |p| %>
-    <% p "@pawn_1は" %>
-    <% p @pawn_1 %>
     <div class = "modal-body">
       <%= p.hidden_field :id, class: "pawn_dayo" %>
-      <div class = "form-group row">
-        <%= p.label :za_id, "座ID", class: "h4 col-2" %>
-        <%= p.collection_select :za_id, @zas, :id, :name, { }, { class: "za_dayo" } %>
-      </div>
-      <div class = "form-group row">
-        <%= p.label :position_id, "役職ID", class: "h4 col-2" %>
-        <%= p.collection_select :position_id, @positions, :id, :name, { }, { class: "position_dayo" } %>
-      </div>
+      <%= render "layouts/form_collection_select", f: p, model_attr: :za_id, model_name: "座id", array: @zas, class_name: "za_dayo" %>
+      <%= render "layouts/form_collection_select", f: p, model_attr: :position_id, model_name: "役職id", array: @positions, class_name: "position_dayo" %>
     </div>
     <div class = "modal-footer">
-      <div class = "form-group row">
-        <button type = "button" class = "btn btn-secondary px-4 m-2" data-dismiss = "modal">閉じる</button>
-        <%= p.submit "更新", class: "btn btn-success px-4 m-2" %>
-        <%= link_to "削除", pawn_path(@pawn_1), method: :delete, data: { confirm: "【確認】この駒を削除してもよろしいですか？" }, class: "btn btn-danger px-4 m-2", id: "scripts_show-delete-pawn-Button" %>
-      </div>
+      <%= render "layouts/form_submit", f: p, text: "更新" %>
+      <!--<div class = "form-group row">-->
+      <!--  <button type = "button" class = "btn btn-secondary px-4 m-2" data-dismiss = "modal">閉じる</button>-->
+        <%#= p.submit "更新", class: "btn btn-success px-4 m-2" %>
+        <%#= link_to "削除", pawn_path(@pawn_1), method: :delete, data: { confirm: "【確認】この駒を削除してもよろしいですか？" }, class: "btn btn-danger px-4 m-2", id: "scripts_show-delete-pawn-Button" %>
+      <!--</div>-->
     </div>
   <% end %>
 <%= render "scripts/modal_footer" %>

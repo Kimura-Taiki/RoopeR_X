@@ -8,6 +8,10 @@ class PawnsController < ApplicationController
   def create
     @pawn = Pawn.new(pawn_params)
     @pawn.script_id = params[:script_id].to_i
+    @pawn.id = nil
+    p "--------チェックの時間だ--------"
+    p params
+    p @pawn
     if @pawn.save
       redirect_to @pawn.script
     else

@@ -68,7 +68,7 @@ $(function() {
       });
     })
   });
-  
+
   $(".edit_incident-class").click(function() {
     const incident_id = $(this).data("incident");
     $.ajax({
