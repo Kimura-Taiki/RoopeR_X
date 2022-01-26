@@ -2,7 +2,7 @@
 <p>Find me in app/views/scripts/show.html.erb</p>
 
 <div>
-  <h1 class = "text-center" id = "Tuika"><%= @script.name %></h1>
+  <h1 class = "text-center"><%= @script.name %></h1>
   <p class = "h3 text-center">
     <%= @script.package.name %>&emsp;
     <%= @script.noof_weeks %>週&thinsp;/&thinsp;<%= @script.noof_days %>日
@@ -55,7 +55,7 @@
           </br>
           <button type="button" class="btn btn-primary col m-2 edit_incident-class"
             data-toggle="modal" data-target="#scripts_show-edit-incident-Modal" data-incident=<%= @array[i].id %>
-          >事件を編集<%= @array[i].id%></button>
+          >事件を編集</button>
         <% end %>
       </div>
     <% end %>

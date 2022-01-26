@@ -20,22 +20,6 @@
 //= require_tree .
 
 
-// visibleとhiddenを使い分ける文章だからモーダル関連っぽいけど消しても問題なさそうなのでコメントアウト
-// const select = document.querySelector("#select")
-// select.addEventListener("change", () => {
-//   const b = document.querySelector(".b")
-//   if (select.value === "B") {
-//     b.style.visibility = "visible"
-//   } else {
-//     b.style.visibility = "hidden"
-//   }
-// })
-
-$(function(){
-  $("#Tuika").on("click",function() {
-    console.log("追加したよ");
-  });
-});
 
 $(function() {
   $(".new_pawn-class").click(function() {

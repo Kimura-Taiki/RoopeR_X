@@ -18,7 +18,6 @@ Rails.application.routes.draw do
     resources :pawns, shallow: true
     resources :incidents, shallow: true
   end
-  # get "scripts/edit_pawn"
 
   # 惨劇セット系統のルーティング
   # Pawnリソースで浅いネストへ挑戦。コレクション系統とメンバー系統を分割し、:idを持たないコレクション系統のみネストさせる
