@@ -91,11 +91,24 @@ CSV.foreach('db/seeds/PackageCrimeOwn.csv', headers: true) do |row|
   )
 end
 
-# Pawnの番兵  ※一時的にscript_idの関連付けを削除しないと
-# translation missing: ja.activerecord.errors.messages.record_invalid
-# の、エラーが起きる
+# Pawnに続きIncidentにも番兵が必要になったので、脚本一覧に不純物が混ざるのは覚悟の上で脚本レベルの番兵を作った
+
+Script.create!(
+  name: "番兵",
+  package_id: 1,
+  noof_days: 1,
+  noof_weeks: 1
+)
+
 Pawn.create!(
-  script_id: 0,
+  script_id: 1,
   za_id: 35,
   position_id: 1
+)
+
+Incident.create!(
+  day: 1,
+  script_id: 1,
+  pawn_id: 1,
+  crime_id: 1
 )

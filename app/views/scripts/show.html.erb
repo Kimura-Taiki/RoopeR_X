@@ -10,8 +10,8 @@
 </div>
 <div class = "row px-3">
   <button type="button" class="btn btn-primary col m-2 py-1" data-toggle="modal" data-target="#scripts_show-edit-script-Modal">基本情報を編集</button>
-  <button type="button" class="btn btn-primary col m-2 novel_pawn-class" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
-  <button type="button" class="btn btn-primary col m-2" data-toggle="modal" data-target="#scripts_show-add-incident-Modal">事件を追加</button>
+  <button type="button" class="btn btn-primary col m-2 new_pawn-class" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
+  <button type="button" class="btn btn-primary col m-2 new_incident-class" data-toggle="modal" data-target="#scripts_show-add-incident-Modal">事件を追加</button>
   <%= link_to "削除", @script, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger col m-2" %>
 </div>
 
@@ -52,7 +52,10 @@
           <%= @array[i].pawn.za.name %>
           </br>
           <%= attachment_image_tag @array[i].pawn.za, :image, :fill, 128, 128 %>
-        <% else %>
+          </br>
+          <button type="button" class="btn btn-primary col m-2 edit_incident-class"
+            data-toggle="modal" data-target="#scripts_show-edit-incident-Modal" data-incident=<%= @array[i].id %>
+          >事件を編集<%= @array[i].id%></button>
         <% end %>
       </div>
     <% end %>
@@ -66,47 +69,17 @@
   <%= render "scripts/form", script: @script, packages: @packages, text: "更新" %>
 <%= render "scripts/modal_footer" %>
 
-<!--駒の追加モーダル-->
+<!--駒追加モーダル-->
 <%= render "pawns/new_modal" %>
-<%#= render "scripts/modal_header", id_class: "scripts_show-add-pawn-Modal", text: "駒追加フォーム" %>
-  <%#= form_with model: [@script, @pawn], class: "container", local: true do |p| %>
-  <%#= render "pawns/form", model: [@script, @pawn], url: script_pawns_path(@script), method: :post, text: "追加", p: p %>
-  <%# end %>
-<%#= render "scripts/modal_footer" %>
 
-<!--駒の編集モーダル-->
+<!--駒編集モーダル-->
 <%= render "pawns/edit_modal" %>
-<%#= render "scripts/modal_header", id_class: "scripts_show-edit-pawn-Modal", text: "駒編集フォーム" %>
-  <%#= form_with model: @pawn, url: pawn_path, class: "container", id: "edit_pawn-Form", local: true do |p| %>
-  <%#= render "pawns/form", model: @pawn, url: pawn_path, method: :patch, text: "更新", p: p %>
-  <%# end %>
-<%#= render "scripts/modal_footer" %>
 
-<!--事件追加用のモーダル-->
-<%= render "scripts/modal_header", id_class: "scripts_show-add-incident-Modal", text: "事件追加フォーム" %>
-  <%= form_with model: [@script, @incident], url: script_incidents_path(@script), class: "container", local: true do |i| %>
-    <div class = "modal-body">
-      <div class = "form-group row">
-        <%= i.label :day, "日付", class: "h4 col-2" %>
-        <%= i.select :day, @days, {}, { class: "btn btn-primary dropdown-toggle" } %>
-      </div>
-      <div class = "form-group row">
-        <%= i.label :crime_id, "犯罪ID", class: "h4 col-2" %>
-        <%= i.collection_select :crime_id, @crimes, :id, :name %>
-      </div>
-      <div class = "form-group row">
-        <%= i.label :pawn_id, "犯人", class: "h4 col-2" %>
-        <%= i.collection_select :pawn_id, @pawns, :id, :pawn_name %>
-      </div>
-    </div>
-    <div class = "modal-footer">
-      <div class = "form-group row">
-        <button type = "button" class = "btn btn-secondary px-5 mr-3" data-dismiss = "modal">閉じる</button>
-        <%= i.submit "追加", class: "btn btn-success px-5" %>
-      </div>
-    </div>
-  <% end %>
-<%= render "scripts/modal_footer" %>
+<!--事件追加モーダル-->
+<%= render "incidents/new_modal" %>
+
+<!--事件編集モーダル-->
+<%= render "incidents/edit_modal" %>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

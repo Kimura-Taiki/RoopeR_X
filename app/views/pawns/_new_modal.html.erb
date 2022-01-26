@@ -6,11 +6,7 @@
       <%= render "layouts/form_collection_select", f: p, model_attr: :position_id, model_name: "役職id", array: @positions, class_name: "position_dayo" %>
     </div>
     <div class = "modal-footer">
-      <%= render "layouts/form_submit", f: p, text: "追加" %>
-      <!--<div class = "form-group row">-->
-        <!--<button type = "button" class = "btn btn-secondary px-4 m-2" data-dismiss = "modal">閉じる</button>-->
-        <%#= p.submit "追加", class: "btn btn-success px-4 m-2" %>
-      <!--</div>-->
+      <%= render "layouts/form_submit", f: p, text: "追加", delete: "" %>
     </div>
   <% end %>
 <%= render "scripts/modal_footer" %>

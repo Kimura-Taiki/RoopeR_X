@@ -26,6 +26,7 @@ class ScriptsController < ApplicationController
     @array = Array[nil]
     (1..@script.noof_days).each{|i| @array.push(@incidents.find_by(day: i))}
     @incident = Incident.new
+    @incident_1 = Incident.find(1)
     @crimes = @script.package.crimes
     @weeks = [["１週", 1], ["２週", 2], ["３週", 3], ["４週", 4], ["５週", 5], ["６週", 6], ["７週", 7], ["８週", 8], ["９週", 9], ]
     @days = [["１日", 1], ["２日", 2], ["３日", 3], ["４日", 4], ["５日", 5], ["６日", 6], ["７日", 7], ["８日", 8], ["９日", 9], ]

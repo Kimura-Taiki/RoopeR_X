@@ -38,7 +38,7 @@ $(function(){
 });
 
 $(function() {
-  $(".novel_pawn-class").click(function() {
+  $(".new_pawn-class").click(function() {
     console.log("neo_novelsへ来たぞー")
     $(".pawn_dayo").val()
     $(".za_dayo").val(0)
@@ -69,8 +69,17 @@ $(function() {
     })
   });
 
+  $(".new_incident-class").click(function() {
+    console.log("neo_incidentsへ来たぞー")
+    $(".incident_dayo").val()
+    $(".pawn_dayo").val(0)
+    $(".crime_dayo").val(0)
+  });
+
   $(".edit_incident-class").click(function() {
+    console.log(".edit_incident-classイベントに到着したぞー")
     const incident_id = $(this).data("incident");
+    console.log("事件idは"+incident_id+"です")
     $.ajax({
       url: "incident_edits",
       type: "GET",
@@ -78,7 +87,14 @@ $(function() {
       datatype: "json"
     })
     .done(function(data){
-      $(data).each(function(i,incident){})
+      console.log(data)
+      $(data).each(function(i,incident){
+        $(".incident_dayo").val(incident.id)
+        $(".day_dayo").val(incident.day)
+        $(".pawn_dayo").val(incident.pawn_id)
+        $(".crime_dayo").val(incident.crime_id)
+        $("#scripts_show-delete-incident-Button").attr("href", "/incidents/"+incident.id)
+      })
     })
   })
 })
