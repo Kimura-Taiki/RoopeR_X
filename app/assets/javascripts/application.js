@@ -22,6 +22,39 @@
 
 
 $(function() {
+  $(".key_package_dayo").change(function(){
+    const package_id = $(".key_package_dayo").val();
+    $.ajax({
+      url: "scripts/rule_changes",
+      type: "GET",
+      data: { id: package_id },
+      datatype: "json"
+    })
+    .done(function(data) {
+      console.log(data)
+      const y_rules = data.rule_y
+      const y_selector = "#script_rule_y"
+      $(y_selector).empty();
+      $(y_selector).append("<option value>(nil)</option>");
+      $(y_rules).each(function(i, rule) {
+        $(y_selector).append("<option value=\""+rule.id+"\">"+rule.name+"</option>");
+      });
+      const x_rules = data.rule_x
+      const x1_selector = "#script_rule_x1"
+      $(x1_selector).empty();
+      $(x1_selector).append("<option value>(nil)</option>");
+      $(x_rules).each(function(i, rule) {
+        $(x1_selector).append("<option value=\""+rule.id+"\">"+rule.name+"</option>");
+      })
+      const x2_selector = "#script_rule_x2"
+      $(x2_selector).empty();
+      $(x2_selector).append("<option value>(nil)</option>");
+      $(x_rules).each(function(i, rule) {
+        $(x2_selector).append("<option value=\""+rule.id+"\">"+rule.name+"</option>");
+      })
+    })
+  });
+
   $(".new_pawn-class").click(function() {
     console.log("neo_novelsへ来たぞー")
     $(".pawn_dayo").val()

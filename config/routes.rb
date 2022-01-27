@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   # 脚本系統のルーティング
   namespace :scripts do
+    resources :rule_changes, only: :index, defaults: { format: :json }
     resources :pawn_edits, only: :index, defaults: { format: :json }
     resources :incident_edits, only: :index, defaults: { format: :json }
   end

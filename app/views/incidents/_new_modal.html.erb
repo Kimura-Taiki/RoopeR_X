@@ -2,10 +2,11 @@
   <%= form_with model: [@script, @incident], class: "container", local: true do |i| %>
     <div class = "modal-body">
       <%= i.hidden_field :id, class: "incident_dayo" %>
-      <div class = "form-group row">
-        <%= i.label :day, "日付", class: "h4 col-2" %>
-        <%= i.select :day, @days, {}, { class: "btn btn-primary dropdown-toggle day_dayo" } %>
-      </div>
+      <%= render "layouts/form_select", f: i, model_attr: :day, model_name: "日数", array: @days, class_name: "day_dayo" %>
+      <!--<div class = "form-group row">-->
+        <%#= i.label :day, "日付", class: "h4 col-2" %>
+        <%#= i.select :day, @days, {}, { class: "btn btn-primary dropdown-toggle day_dayo" } %>
+      <!--</div>-->
       <%= render "layouts/form_collection_select", f: i, model_attr: :crime_id, model_name: "犯罪id", array: @crimes, class_name: "crime_dayo" %>
       <%= render "layouts/form_collection_select", f: i, model_attr: :pawn_id, model_name: "犯人", array: @pawns, class_name: "pawn_dayo" %>
     </div>

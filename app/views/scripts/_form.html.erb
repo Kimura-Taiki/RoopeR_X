@@ -4,24 +4,19 @@
       <%= s.label :name, "名称", class: "h4 col-2" %>
       <%= s.text_field :name %>
     </div>
-    <div class = "form-group row">
-      <%= s.label :package_id, "惨劇セット", class: "h4 col-2" %>
-      <%= s.collection_select :package_id, packages, :id, :name %>
-    </div>
-    <div class = "form-group row">
-      <%= s.label :noof_days, "日数", class: "h4 col-2" %>
-      <%= s.text_field :noof_days %>
-    </div>
-    <div class = "form-group row">
-      <%= s.label :noof_weeks, "週数", class: "h4 col-2" %>
-      <%= s.text_field :noof_weeks %>
-    </div>
+    <%= render "layouts/form_collection_select", f: s, model_attr: :package_id, model_name: "惨劇セット", array: packages, class_name: "key_package_dayo" %>
+    <%= render "layouts/form_collection_select", f: s, model_attr: :rule_y, model_name: "ルールY", array: @y_rules, class_name: "rule_y_dayo" %>
+    <%= render "layouts/form_collection_select", f: s, model_attr: :rule_x1, model_name: "ルールX1", array: @x_rules, class_name: "rule_x1_dayo" %>
+    <%= render "layouts/form_collection_select", f: s, model_attr: :rule_x2, model_name: "ルールX2", array: @x_rules, class_name: "rule_x2_dayo" %>
+    <%= render "layouts/form_select", f: s, model_attr: :noof_days, model_name: "日数", array: @days, class_name: "day_dayo" %>
+    <%= render "layouts/form_select", f: s, model_attr: :noof_weeks, model_name: "週数", array: @weeks, class_name: "week_dayo" %>
   </div>
   <div class = "modal-footer">
     <div class = "form-group row">
       <!--<div class = "col-2"></div>-->
       <%#= s.submit '追加', class: "col-2 btn btn-success" %>
-      <%= s.submit "　#{text}　", class: "btn btn-success" %>
+      <%#= s.submit "　#{text}　", class: "btn btn-success" %>
+      <%= render "layouts/form_submit", f: s, text: text, delete: "" %>
     </div>
   </div>
 <% end %>
