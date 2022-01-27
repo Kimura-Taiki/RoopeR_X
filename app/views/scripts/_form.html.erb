@@ -5,9 +5,9 @@
       <%= s.text_field :name %>
     </div>
     <%= render "layouts/form_collection_select", f: s, model_attr: :package_id, model_name: "惨劇セット", array: packages, class_name: "key_package_dayo" %>
-    <%= render "layouts/form_collection_select", f: s, model_attr: :rule_y, model_name: "ルールY", array: @y_rules, class_name: "rule_y_dayo" %>
-    <%= render "layouts/form_collection_select", f: s, model_attr: :rule_x1, model_name: "ルールX1", array: @x_rules, class_name: "rule_x1_dayo" %>
-    <%= render "layouts/form_collection_select", f: s, model_attr: :rule_x2, model_name: "ルールX2", array: @x_rules, class_name: "rule_x2_dayo" %>
+    <%= render "layouts/form_collection_select_selected", f: s, model_attr: :rule_y, model_name: "ルールY", array: @y_rules, class_name: "rule_y_dayo", selected_id: @rules[0].id %>
+    <%= render "layouts/form_collection_select_selected", f: s, model_attr: :rule_x1, model_name: "ルールX1", array: @x_rules, class_name: "rule_x1_dayo", selected_id: @rules[1].id %>
+    <%= render "layouts/form_collection_select_selected", f: s, model_attr: :rule_x2, model_name: "ルールX2", array: @x_rules, class_name: "rule_x2_dayo", selected_id: @rules[2].id %>
     <%= render "layouts/form_select", f: s, model_attr: :noof_days, model_name: "日数", array: @days, class_name: "day_dayo" %>
     <%= render "layouts/form_select", f: s, model_attr: :noof_weeks, model_name: "週数", array: @weeks, class_name: "week_dayo" %>
   </div>

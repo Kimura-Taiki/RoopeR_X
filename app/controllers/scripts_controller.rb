@@ -5,8 +5,7 @@ class ScriptsController < ApplicationController
     @packages = Package.all
     @y_rules = Package.find(1).rules.where(xy: :rule_y)
     @x_rules = Package.find(1).rules.where(xy: :rule_x)
-    p @y_rules
-    p @x_rules
+    @rules = [@y_rules[0], @x_rules[0], @x_rules[1]]
     @weeks = [["１週", 1], ["２週", 2], ["３週", 3], ["４週", 4], ["５週", 5], ["６週", 6], ["７週", 7], ["８週", 8], ["９週", 9], ]
     @days = [["１日", 1], ["２日", 2], ["３日", 3], ["４日", 4], ["５日", 5], ["６日", 6], ["７日", 7], ["８日", 8], ["９日", 9], ]
   end
@@ -14,6 +13,19 @@ class ScriptsController < ApplicationController
   def create
     @script = Script.new(script_params)
     if @script.save
+      @id = @script.id
+      @sr_c = ScriptRuleContract.new
+      @sr_c.script_id = @id
+      @sr_c.rule_id = params[:script][:rule_y].to_i
+      @sr_c.save
+      @sr_c = ScriptRuleContract.new
+      @sr_c.script_id = @id
+      @sr_c.rule_id = params[:script][:rule_x1].to_i
+      @sr_c.save
+      @sr_c = ScriptRuleContract.new
+      @sr_c.script_id = @id
+      @sr_c.rule_id = params[:script][:rule_x2].to_i
+      @sr_c.save
       redirect_to scripts_path
     else
       render :index
@@ -25,6 +37,7 @@ class ScriptsController < ApplicationController
     @script = Script.find(params[:id])
     @y_rules = @script.package.rules.where(xy: :rule_y)
     @x_rules = @script.package.rules.where(xy: :rule_x)
+    @rules = @script.rules
     @pawns = @script.pawns.eager_load(:za, :position)
     @pawn = Pawn.new
     @pawn_1 = Pawn.find(1)

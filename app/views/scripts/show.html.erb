@@ -6,11 +6,15 @@
   <p class = "h3 text-center">
     <%= @script.package.name %>&emsp;
     <%= @script.noof_weeks %>週&thinsp;/&thinsp;<%= @script.noof_days %>日
-
+  </p>
+  <p class = "h3 text-center">
+    <% @rules.each do |r| %>
+      &ensp;<%= r.name %>&ensp;
+    <% end %>
   </p>
 </div>
 <div class = "row px-3">
-  <button type="button" class="btn btn-primary col m-2 py-1" data-toggle="modal" data-target="#scripts_show-edit-script-Modal">基本情報を編集</button>
+  <button type="button" class="btn btn-primary col m-2 edit_script-class" data-toggle="modal" data-target="#scripts_show-edit-script-Modal">基本情報を編集</button>
   <button type="button" class="btn btn-primary col m-2 new_pawn-class" data-toggle="modal" data-target="#scripts_show-add-pawn-Modal">駒を追加</button>
   <button type="button" class="btn btn-primary col m-2 new_incident-class" data-toggle="modal" data-target="#scripts_show-add-incident-Modal">事件を追加</button>
   <%= link_to "削除", @script, method: :delete, data: {confirm: "削除しますか？"}, class: "btn btn-danger col m-2" %>

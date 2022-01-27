@@ -48,6 +48,12 @@
 * Tragedy
 * 
 
+## Script_Rule_Contract(脚本ルール間交差テーブル)
+### 属性
+* Script_id
+* Rule_id
+* 
+
 ## Pawn(駒)
 ### 属性
 * 

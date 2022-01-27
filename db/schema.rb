@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_052645) do
+ActiveRecord::Schema.define(version: 2022_01_27_092326) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -97,6 +97,13 @@ ActiveRecord::Schema.define(version: 2022_01_19_052645) do
   create_table "rules", force: :cascade do |t|
     t.string "name"
     t.integer "xy"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "script_rule_contracts", force: :cascade do |t|
+    t.integer "script_id"
+    t.integer "rule_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
