@@ -25,7 +25,7 @@ $(function() {
   $(".key_package_dayo").change(function(){
     const package_id = $(".key_package_dayo").val();
     $.ajax({
-      url: "scripts/rule_changes",
+      url: "rule_changes",
       type: "GET",
       data: { id: package_id },
       datatype: "json"

@@ -23,19 +23,28 @@
 
 <hr>
 
+<!--役職一覧-->
+<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
+  <% @needs.each do |p| %>
+    &ensp;<%= p.name %>&ensp;
+  <% end %>
+</div>
+
+<hr>
+
 <!--駒一覧-->
-<div class = "container-fluid px-5">
+<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
   <p class = "h4 text-center">駒一覧</p>
   <div class = "row">
     <% @pawns.each do |p| %>
-      <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
+      <div class = "<%= ApplicationController::DEFAULT_COL %>">
         <%= p.za.name %>
         </br>
         <%= p.position.name %>
         </br>
         <%= attachment_image_tag p.za, :image, :fill, 128, 128 %>
         </br>
-        <button type="button" class="btn btn-primary col m-2 edit_pawn-class"
+        <button type="button" class="btn btn-primary col px-2 my-2 edit_pawn-class"
           data-toggle="modal" data-target="#scripts_show-edit-pawn-Modal" data-pawn=<%= p.id %>
         >駒を編集</button>
       </div>
@@ -46,12 +55,12 @@
 <hr>
 
 <!--日程表。事件モデルや駒モデルと連携する-->
-<div class = "container-fluid px-5">
+<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
   <p class = "h4 text-center">事件予定</p>
   <div class = "row">
     <% p "----　ここからshowにおけるIncident多重ネストが始まる　----" %>
     <% for i in 1..@script.noof_days do %>
-      <div class = "col-6 col-sm-4 col-md-3 col-lg-2 border">
+      <div class = "<%= ApplicationController::DEFAULT_COL %>">
         <p>day<%= i %></p>
         <% if @array[i] %>
           <%= @array[i].crime.name %>
@@ -60,7 +69,7 @@
           </br>
           <%= attachment_image_tag @array[i].pawn.za, :image, :fill, 128, 128 %>
           </br>
-          <button type="button" class="btn btn-primary col m-2 edit_incident-class"
+          <button type="button" class="btn btn-primary col px-2 my-2 edit_incident-class"
             data-toggle="modal" data-target="#scripts_show-edit-incident-Modal" data-incident=<%= @array[i].id %>
           >事件を編集</button>
         <% end %>

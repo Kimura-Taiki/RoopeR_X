@@ -38,6 +38,13 @@ class ScriptsController < ApplicationController
     @y_rules = @script.package.rules.where(xy: :rule_y)
     @x_rules = @script.package.rules.where(xy: :rule_x)
     @rules = @script.rules
+    # @needs = []
+    # @rules.each do |r|
+    #   r.positions.each do |p|
+    #     @needs.push(p)
+    #   end
+    # end
+    @needs = include_positions(@script.rules)
     @pawns = @script.pawns.eager_load(:za, :position)
     @pawn = Pawn.new
     @pawn_1 = Pawn.find(1)
@@ -63,6 +70,14 @@ class ScriptsController < ApplicationController
   def update
     @script = Script.find(params[:id])
     if @script.update(script_params)
+      rules = []
+      rules.push(Rule.find(params[:script][:rule_y]))
+      rules.push(Rule.find(params[:script][:rule_x1]))
+      rules.push(Rule.find(params[:script][:rule_x2]))
+      @script.rules = []
+      @script.rules = rules
+      p rules
+      p @script.rules
       redirect_to @script
     else
       render :show
@@ -78,5 +93,15 @@ class ScriptsController < ApplicationController
   private
   def script_params
     params.require(:script).permit(:name, :package_id, :noof_days, :noof_weeks)
+  end
+
+  def include_positions(rules)
+    needs = []
+    rules.each do |r|
+      r.positions.each do |p|
+        needs.push(p)
+      end
+    end
+    needs
   end
 end
