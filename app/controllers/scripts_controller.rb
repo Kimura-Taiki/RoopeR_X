@@ -37,22 +37,16 @@ class ScriptsController < ApplicationController
     @script = Script.find(params[:id])
     @y_rules = @script.package.rules.where(xy: :rule_y)
     @x_rules = @script.package.rules.where(xy: :rule_x)
-    @rules = @script.rules
-    # @needs = []
-    # @rules.each do |r|
-    #   r.positions.each do |p|
-    #     @needs.push(p)
-    #   end
-    # end
-    @needs = include_positions(@script.rules)
+    p "ここから"
+    @rules = @script.rules.preload(:positions)
+    @needs = include_positions(@rules)
+    p "ここまで"
     @pawns = @script.pawns.eager_load(:za, :position)
     @pawn = Pawn.new
     @pawn_1 = Pawn.find(1)
     @zas = Za.all
     @positions = @script.package.positions
     @incidents = @script.incidents.preload(:crime, pawn: :za)
-    # @incidents = @script.incidents.preload(:crime, :pawn)
-    # @incidents = @script.incidents
     @array = Array[nil]
     (1..@script.noof_days).each{|i| @array.push(@incidents.find_by(day: i))}
     @incident = Incident.new
@@ -70,13 +64,7 @@ class ScriptsController < ApplicationController
   def update
     @script = Script.find(params[:id])
     if @script.update(script_params)
-      rules = []
-      rules.push(Rule.find(params[:script][:rule_y]))
-      rules.push(Rule.find(params[:script][:rule_x1]))
-      rules.push(Rule.find(params[:script][:rule_x2]))
-      @script.rules = []
-      @script.rules = rules
-      p rules
+      update_script_rule_contracts
       p @script.rules
       redirect_to @script
     else
@@ -97,11 +85,13 @@ class ScriptsController < ApplicationController
 
   def include_positions(rules)
     needs = []
-    rules.each do |r|
-      r.positions.each do |p|
-        needs.push(p)
-      end
-    end
+    rules.each {|r| r.positions.each {|p| needs.push(p)}}
     needs
+  end
+
+  def update_script_rule_contracts
+    @script.rules = []
+    id_params = [params[:script][:rule_y], params[:script][:rule_x1], params[:script][:rule_x2]]
+    id_params.each {|id| @script.rules << Rule.find(id)}
   end
 end
