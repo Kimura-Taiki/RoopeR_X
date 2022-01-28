@@ -11,6 +11,10 @@
     <% @rules.each do |r| %>
       &ensp;<%= r.name %>&ensp;
     <% end %>
+    </br>
+    <% @hash.each do |h| %>
+      &ensp;<%= h[0].name %><%= h[1] %>&ensp;
+    <% end %>
   </p>
 </div>
 <div class = "row px-3">
