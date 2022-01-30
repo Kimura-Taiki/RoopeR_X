@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#home'
   get "homes/csv", to: "homes#csv"
   get "homes/jspull"
-
+ 
   # 座系統のルーティング
   resources :zas do
     get "category_x", on: :new
