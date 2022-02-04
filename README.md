@@ -149,7 +149,34 @@
 
 
 
-<!--眠い、-->
+# 模擬戦系統のモデル
+## Mock(模擬戦)
+### 属性
+* Script_id
+* 
+### 隷下
+* Board
+* Chara
+* 
+
+## Board(ボード)
+### 属性
+* Mock_id
+### 隷下
+* Chara
+* Delegate(ボードの代表となるChara。関連付けはhas_one: delegate, class_name: "Chara")
+* 
+
+## Chara(キャラ)
+### 属性
+* Mock_id
+* Board_id
+* Pawn_id(模擬戦はPawnと連動していた方が都合が良さそうなので)
+* Delegate_id(キャラが代表しているBoard。バリデーションでエラーが起きるからChara側からの関連付けはしない)
+* 
+
+
+
 # 惨劇系統のモデル
 ## Tragedy(惨劇)
 ### 属性
@@ -164,6 +191,7 @@
 - ルール３つへの関連付けを１対多×3で実装してみる。多対多関連付けだと順番でルールの位置を指定するのが結構不便. 
 - 特殊ルールは追加ルール的な印象があるのでentraで. 
 - 当座、現在の日付と現在の週数はdate属性として惨劇モデルが抱える事にする. 
+- 結論、惨劇モデルじゃなくて模擬戦モデルを試しに作ってみる事にする
 * name
 * noof_days
 * noof_weeks
@@ -171,30 +199,8 @@
 * rule_x1_id
 * rule_x2_id
 * extra
-
 ### 所持
 * Board
 * Chara
 *
-
-## Board(ボード)
-### 属性
-* build
-*
-* Tragedy_id
-### 所持
-* Chara
-*
-
-## Chara(キャラ)
-### 属性
-*
-* Tragedy_id
-* Board_id
-* Za_id
-*
-
-
-
-
 
