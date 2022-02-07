@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'homes#home'
   get "homes/csv", to: "homes#csv"
   get "homes/jspull"
- 
+
   # 座系統のルーティング
   resources :zas do
     get "category_x", on: :new
@@ -30,6 +30,9 @@ Rails.application.routes.draw do
     resources :positions, shallow: true, only: [:index, :show]
     resources :crimes, shallow: true, only: [:index, :show]
   end
+
+  # 盤面系統のルーティング
+  resources :boards
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 

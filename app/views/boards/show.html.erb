@@ -1,0 +1,26 @@
+<h1>Boards#show</h1>
+<p>Find me in app/views/boards/show.html.erb</p>
+
+<div class = "row px-3">
+  <%= link_to "盤面一覧へ", boards_path, class: "btn btn-secondary col m-2" %>
+</div>
+
+<hr>
+
+実際の盤面を駒含めて描画
+<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
+  <div class = "row">
+    <div class = "col-6 h-100 border bg-orange-200">
+      病院
+    </div>
+    <div class = "col-6 h-100 border bg-indigo-200">
+      神社
+    </div>
+    <div class = "col-6 h-100 border bg-gray-200">
+      都市
+    </div>
+    <div class = "col-6 h-100 border bg-cyan-200">
+      学校
+    </div>
+  </div>
+</div>

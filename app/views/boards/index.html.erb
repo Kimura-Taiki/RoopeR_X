@@ -1,0 +1,33 @@
+<h1>Boards#index</h1>
+<p>Find me in app/views/boards/index.html.erb</p>
+
+<div>
+  <h1 class = "text-center">ここは盤面の一覧です</h1>
+</div>
+<div class = "row px-3">
+  <%= link_to "新規盤面作成", boards_path, method: :post, class: "btn btn-success col m-2" %>
+  <%= link_to "脚本一覧へ", scripts_path, class: "btn btn-secondary col m-2" %>
+</div>
+
+<!--盤面一覧-->
+<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
+  <% @boards.each do |p| %>
+    &ensp;盤面<%= p.id %>&ensp;
+  <% end %>
+</div>
+
+<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
+  <p class = "h4 text-center">盤面一覧</p>
+  <div class = "row">
+    <% @boards.each do |b| %>
+      <%= link_to b, class: ApplicationController::DEFAULT_COL+" text-center" do %>
+        ----
+        </br>
+        盤面<%= b.id %>
+        </br>
+        ----
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
