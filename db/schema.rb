@@ -10,11 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_064402) do
+ActiveRecord::Schema.define(version: 2022_02_07_083253) do
 
   create_table "boards", force: :cascade do |t|
     t.integer "week"
     t.integer "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", force: :cascade do |t|
+    t.integer "status"
+    t.integer "location"
+    t.integer "paranoia"
+    t.integer "goodwill"
+    t.integer "intrigue"
+    t.boolean "friended", default: false, null: false
+    t.boolean "deaded", default: false, null: false
+    t.integer "board_id"
+    t.integer "za_id"
+    t.integer "position_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

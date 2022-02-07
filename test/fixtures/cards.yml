@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: 1
+  location: 1
+  paranoia: 1
+  goodwill: 1
+  intrigue: 1
+  friended: false
+  deaded: false
+  board_id: 1
+  za_id: 1
+  position_id: 1
+
+two:
+  status: 1
+  location: 1
+  paranoia: 1
+  goodwill: 1
+  intrigue: 1
+  friended: false
+  deaded: false
+  board_id: 1
+  za_id: 1
+  position_id: 1

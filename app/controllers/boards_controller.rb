@@ -18,6 +18,11 @@ class BoardsController < ApplicationController
   end
 
   def show
+    @board = Board.find(params[:id])
+    @hospital = @board.cards.where(location: :hospital)
+    @shrine = @board.cards.where(location: :shrine)
+    @city = @board.cards.where(location: :city)
+    @school = @board.cards.where(location: :school)
   end
 
   def edit

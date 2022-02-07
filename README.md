@@ -178,7 +178,7 @@
 
 ## Card(カード)
 ### 属性
-* alive
+* status
 * location
 * paranoia
 * goodwill
