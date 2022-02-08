@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 2022_02_07_083253) do
   end
 
   create_table "cards", force: :cascade do |t|
-    t.integer "status"
+    t.integer "status", default: 1
     t.integer "location"
-    t.integer "paranoia"
-    t.integer "goodwill"
-    t.integer "intrigue"
+    t.integer "paranoia", default: 0
+    t.integer "goodwill", default: 0
+    t.integer "intrigue", default: 0
     t.boolean "friended", default: false, null: false
     t.boolean "deaded", default: false, null: false
     t.integer "board_id"
@@ -151,6 +151,7 @@ ActiveRecord::Schema.define(version: 2022_02_07_083253) do
     t.string "name"
     t.integer "paranoia_limit"
     t.string "image_id"
+    t.integer "first_location"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -23,8 +23,18 @@ class BoardsController < ApplicationController
     @shrine = @board.cards.where(location: :shrine)
     @city = @board.cards.where(location: :city)
     @school = @board.cards.where(location: :school)
+    new_modal_construct(params[:id])
   end
 
   def edit
+  end
+
+  private
+  def new_modal_construct(id)
+    # @board = Board.find(params[:id])
+    @board = Board.find(id)
+    @card = Card.new
+    @zas = Za.all
+    @positions = Position.all
   end
 end

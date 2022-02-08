@@ -8,11 +8,12 @@
 
 require "csv"
 
-CSV.foreach('db/seeds/座の一覧(新).csv', headers: true) do |row|
+CSV.foreach('db/seeds/座の一覧.csv', headers: true) do |row|
   Za.create(
     name: row['名称'],
     paranoia_limit: row['不安臨界'],
-    image: File.open("./app/assets/images/#{row['画像名']}")
+    image: File.open("./app/assets/images/#{row['画像名']}"),
+    first_location: row['初期位置']
   )
 end
 

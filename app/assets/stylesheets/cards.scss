@@ -1,3 +1,48 @@
 // Place all the styles related to the Cards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.bg-paranoia {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  // line-height: 100px;
+  // font-size: 1.8em;
+  background-color: #6944BA;  // $Purple-500
+  z-index: 1;
+}
+.bg-paranoia:before {
+  position: absolute;
+  // top: 0;
+  // left: 50%;
+  // margin-left: -50px;
+  content: '\f7e4';  // fire-flame-curved
+  color: #3F2970;  // $Purple-700
+  // font-size: 20px;
+  font-family: fontAwesome;
+  z-index: -1;
+}
+
+.text-purple-500 {
+  color: #6944BA;
+}
+
+.text-purple-700 {
+  color: #3F2970;
+}
+
+.text-pink-500 {
+  color: #C54282;
+}
+
+.text-pink-700 {
+  color: #76274E;
+}
+
+.text-green-500 {
+  color: #408558;
+}
+
+.text-green-700 {
+  color: #255035;
+}

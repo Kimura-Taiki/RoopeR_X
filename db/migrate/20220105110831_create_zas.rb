@@ -4,6 +4,7 @@ class CreateZas < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :paranoia_limit
       t.string :image_id
+      t.integer :first_location
 
       t.timestamps
     end

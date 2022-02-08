@@ -36,7 +36,9 @@ Rails.application.routes.draw do
   end
 
   # 盤面系統のルーティング
-  resources :boards
+  resources :boards do
+    resources :cards, shallow: true
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
