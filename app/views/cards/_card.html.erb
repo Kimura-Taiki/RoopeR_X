@@ -1,10 +1,4 @@
-<div class = "<%= ApplicationController::DEFAULT_COL %> py-1">
-  <% if 0 == 1 %>
-    <%= card.za.name %>
-    </br>
-    <%= card.position.name %>
-    </br>
-  <% end %>
+<div class = "<%= ApplicationController::DEFAULT_COL %> my-0 shadow">
   <%= attachment_image_tag card.za, :image, :fill, 80, 80 , class: "d-block mx-auto" %>
   <div class = "row px-0 mx-0 text-center">
     <%= render "cards/basic_parameter", value: "#{card.za.paranoia_limit}/", color_class: "text-dark", font_class: "fas fa-radiation" %>
