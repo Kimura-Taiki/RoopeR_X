@@ -3,6 +3,7 @@ class CreateCards < ActiveRecord::Migration[5.2]
     create_table :cards do |t|
       t.integer :status,    default: 1
       t.integer :location
+      t.integer :first_location
       t.integer :paranoia,  default: 0
       t.integer :goodwill,  default: 0
       t.integer :intrigue,  default: 0
