@@ -9,13 +9,9 @@
   <%= link_to "脚本一覧へ", scripts_path, class: "btn btn-secondary col m-2" %>
 </div>
 
-<!--盤面一覧-->
-<div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
-  <% @boards.each do |p| %>
-    &ensp;盤面<%= p.id %>&ensp;
-  <% end %>
-</div>
+<hr>
 
+<!--盤面一覧-->
 <div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
   <p class = "h4 text-center">盤面一覧</p>
   <div class = "row">

@@ -6,11 +6,20 @@ class BoardsController < ApplicationController
   def new
   end
 
+  # def create
+  #   @board = Board.new
+  #   @board.week = 1
+  #   @board.day = 1
+  #   if @board.save
+  #     redirect_to @board
+  #   else
+  #     render :index
+  #   end
+  # end
+
   def create
-    @board = Board.new
-    @board.week = 1
-    @board.day = 1
-    if @board.save
+    @board = Board.board_create
+    if @board
       redirect_to @board
     else
       render :index
