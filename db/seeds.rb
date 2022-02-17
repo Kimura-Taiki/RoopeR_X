@@ -68,6 +68,13 @@ CSV.foreach('db/seeds/惨劇セットの一覧.csv', headers: true) do |row|
   )
 end
 
+CSV.foreach('db/seeds/領域の一覧.csv', headers: true) do |row|
+  Area.create(
+    yml: row['yml'],
+    name: row['名前']
+  )
+end
+
 # PackageRuleOwnの関連付けに'belongs_to :crime'が含まれていたので、それが原因かもしれない
 # やっぱダメだった
 

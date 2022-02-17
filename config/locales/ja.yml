@@ -22,6 +22,14 @@
           intrigue: "暗躍C"
           dead: "死体数"
           goodwill: "友好C"
+      area:
+        yml:
+          hospital: "病院"
+          shrine: "神社"
+          city: "都市"
+          school: "学校"
+          waiting: "未登場"
+          excluded: "除外済み"
       # order:
       #   payment_method:
       #     credit_card: "クレジットカード"

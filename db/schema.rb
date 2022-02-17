@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_07_083253) do
+ActiveRecord::Schema.define(version: 2022_02_17_060745) do
+
+  create_table "areas", force: :cascade do |t|
+    t.integer "yml"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "boards", force: :cascade do |t|
     t.integer "week"
