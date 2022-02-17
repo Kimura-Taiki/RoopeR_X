@@ -7,8 +7,9 @@ class CardsController < ApplicationController
 
   def create
     @card = Card.new(card_params)
-    @card.location = @card.za.first_location
-    @card.first_location = Card.locations[@card.location]
+    _area = @card.za.area
+    @card.first_area = _area
+    @card.current_area = _area
     @card.board_id = params[:board_id].to_i
     if @card.save
       redirect_to @card.board

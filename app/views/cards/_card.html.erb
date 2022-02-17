@@ -1,13 +1,13 @@
 <div class = "<%= ApplicationController::DEFAULT_COL %> my-0 shadow">
   ID:<%= card.id %>
   </br>
-  初期位置:<%= card.first_location %>
+  初期位置:<%= card.first_location_name %>
   </br>
-  現在地:<%= card.location %>
+  現在地:<%= card.current_location_name %>
   </br>
   <%= attachment_image_tag card.za, :image, :fill, 80, 80 , class: "d-block mx-auto" %>
   <div class = "row px-0 mx-0 text-center">
-    <%= render "cards/basic_parameter", value: "#{card.za.paranoia_limit}/", color_class: "text-dark", font_class: "fas fa-radiation" %>
+    <%= render "cards/basic_parameter", value: "#{card.paranoia_limit}/", color_class: "text-dark", font_class: "fas fa-radiation" %>
     <%= render "cards/3counter", value: card.paranoia, color_class: "text-purple-500", font_class: "fab fa-gripfire" %>
     <%= render "cards/3counter", value: card.goodwill, color_class: "text-pink-500", font_class: "fas fa-heart" %>
     <%= render "cards/3counter", value: card.intrigue, color_class: "text-green-500", font_class: "fas fa-theater-masks" %>

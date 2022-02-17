@@ -1,7 +1,7 @@
 yml,名前
-1,病院
-2,神社
-3,都市
-4,学校
-5,未登場
-6,除外済み
+hospital,病院
+shrine,神社
+city,都市
+school,学校
+waiting,登場待ち
+excluded,除外済み

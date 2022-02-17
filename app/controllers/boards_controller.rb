@@ -28,10 +28,10 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @hospital = @board.cards.where(location: :hospital)
-    @shrine = @board.cards.where(location: :shrine)
-    @city = @board.cards.where(location: :city)
-    @school = @board.cards.where(location: :school)
+    @hospital = @board.cards.where(current_area_id: 1)
+    @shrine = @board.cards.where(current_area_id: 2)
+    @city = @board.cards.where(current_area_id: 3)
+    @school = @board.cards.where(current_area_id: 4)
     new_modal_construct(params[:id])
   end
 

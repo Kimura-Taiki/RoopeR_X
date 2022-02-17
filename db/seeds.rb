@@ -8,12 +8,19 @@
 
 require "csv"
 
+CSV.foreach('db/seeds/領域の一覧.csv', headers: true) do |row|
+  Area.create(
+    yml: row['yml'],
+    name: row['名前']
+  )
+end
+
 CSV.foreach('db/seeds/座の一覧.csv', headers: true) do |row|
   Za.create(
     name: row['名称'],
     paranoia_limit: row['不安臨界'],
     image: File.open("./app/assets/images/#{row['画像名']}"),
-    first_location: row['初期位置']
+    area_id: row['初期位置']
   )
 end
 
@@ -65,13 +72,6 @@ end
 CSV.foreach('db/seeds/惨劇セットの一覧.csv', headers: true) do |row|
   Package.create(
     name: row['名称']
-  )
-end
-
-CSV.foreach('db/seeds/領域の一覧.csv', headers: true) do |row|
-  Area.create(
-    yml: row['yml'],
-    name: row['名前']
   )
 end
 

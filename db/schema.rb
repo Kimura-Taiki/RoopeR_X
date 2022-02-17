@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(version: 2022_02_17_060745) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "status", default: 1
-    t.integer "location"
-    t.integer "first_location"
+    t.integer "first_area_id"
+    t.integer "current_area_id"
     t.integer "paranoia", default: 0
     t.integer "goodwill", default: 0
     t.integer "intrigue", default: 0
@@ -159,7 +159,7 @@ ActiveRecord::Schema.define(version: 2022_02_17_060745) do
     t.string "name"
     t.integer "paranoia_limit"
     t.string "image_id"
-    t.integer "first_location"
+    t.integer "area_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
