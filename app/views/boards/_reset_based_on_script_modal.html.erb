@@ -1,0 +1,13 @@
+<!--based_onScriptのモーダル-->
+<%= render "layouts/modal_header", id_class: "boards_show-basedon-script-Modal", title: "脚本典拠盤面再建フォーム" %>
+  <%= form_with model: @scripts, class: "container", local: true do |c| %>
+    <div class = "modal-body">
+      <%= c.hidden_field :id, class: "card_dayo" %>
+      <%= render "layouts/form_collection_select", f: c, model_attr: :za_id, model_name: "座id", array: @zas, class_name: "za_dayo" %>
+      <%= render "layouts/form_collection_select", f: c, model_attr: :position_id, model_name: "役職id", array: @positions, class_name: "position_dayo" %>
+    </div>
+    <div class = "modal-footer">
+      <%= render "layouts/form_submit", f: c, text: "追加", delete: "" %>
+    </div>
+  <% end %>
+<%= render "layouts/modal_footer" %>

@@ -7,6 +7,8 @@
 * paranoia_limit
 * image_id
 * 
+* Area_id
+* 
 ### 隷下
 * Ability
 * Za_Category_Attribution
@@ -179,7 +181,6 @@
 ## Card(カード)
 ### 属性
 * status
-* location
 * paranoia
 * goodwill
 * intrigue
@@ -189,6 +190,8 @@
 * Board_id
 * Za_id
 * Position_id
+* First_Area_id => Area(領域)
+* Current_Area_id => A
 * 
 ### 隷下
 * Aura

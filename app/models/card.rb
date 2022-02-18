@@ -9,11 +9,11 @@ class Card < ApplicationRecord
   # enum location: { waiting: 0, hospital: 1, shrine: 2, city: 3, school: 4, excluded: 5, godly_being: 6, henchman: 7, servant: 8 }
 
   def first_location_name
-    self.first_area.yml_i18n
+    Area.location_name(first_area_id)
   end
 
   def current_location_name
-    self.current_area.yml_i18n
+    Area.location_name(current_area_id)
   end
 
   def paranoia_limit

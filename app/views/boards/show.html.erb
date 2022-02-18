@@ -3,13 +3,13 @@
 
 <div class = "row px-3">
   <button type="button" class="btn btn-primary col m-2 new_card-class" data-toggle="modal" data-target="#boards_show-add-card-Modal">カードを追加</button>
-  <%#= link_to "カードを追加", boards_path, class: "btn btn-primary col m-2" %>
+  <button type="button" class="btn btn-primary col m-2" data-toggle="modal" data-target="#boards_show-basedon-script-Modal">脚本から盤面作成</button>
   <%= link_to "盤面一覧へ", boards_path, class: "btn btn-secondary col m-2" %>
 </div>
 
 <hr>
 
-実際の盤面を駒含めて描画
+<!--実際の盤面を駒含めて描画-->
 <div class = "<%= ApplicationController::DEFAULT_CONTAINER %>">
   <div class = "row">
     <%= render "boards/area", color_class: "bg-orange-200", area_name: "病院", cards: @hospital %>
@@ -19,5 +19,8 @@
   </div>
 </div>
 
-カード追加モーダル
+<!--カード追加モーダル-->
 <%= render "cards/new_modal" %>
+
+<!--脚本盤面作成モーダル-->
+<%= render "boards/reset_based_on_script_modal" %>
