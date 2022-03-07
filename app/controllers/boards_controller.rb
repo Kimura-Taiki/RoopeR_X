@@ -34,34 +34,16 @@ class BoardsController < ApplicationController
     @school = @cards.where(current_area: 4).preload(:current_area)
     new_modal_construct(params[:id])
     reset_modal_construct(params[:id])
-    # @board = Board.find(params[:id])
-    # @hospital = @board.cards.where(current_area_id: 1)
-    # @shrine = @board.cards.where(current_area_id: 2)
-    # @city = @board.cards.where(current_area_id: 3)
-    # @school = @board.cards.where(current_area_id: 4)
-    # new_modal_construct(params[:id])
   end
 
   def edit
   end
 
   def update_by_script
-    p "到達ー"
-    @board_id = params[:id].to_i
-    @board = Board.find(@board_id)
-    # p Board.find(@board_id).cards
-    @cards = []
-    @cards.push(Card.find_by(board_id: @board_id, za_id: 36))
-    @cards.push(Card.find_by(board_id: @board_id, za_id: 37))
-    @cards.push(Card.find_by(board_id: @board_id, za_id: 38))
-    @cards.push(Card.find_by(board_id: @board_id, za_id: 39))
-    @board.cards = @cards
+    @board = Board.find(params[:id])
+    keep_area(@board)
     @script = Script.find(params[:board][:script_id])
-    @script.pawns.each do |p|
-      Card.add_by_pawn(board: @board, pawn: p)
-      # @cards.push(Card.new_by_pawn(pawn: p))
-    end
-    # Board.find(@board_id).cards = @cards
+    @script.pawns.each{|p| Card.add_by_pawn(board: @board, pawn: p)}
     redirect_to board_path(@board)
   end
 
@@ -76,5 +58,15 @@ class BoardsController < ApplicationController
   def reset_modal_construct(id)
     @board = Board.find(id)
     @scripts = Script.all
+  end
+
+  def keep_area(board)
+    _cards = []
+    _board_id = board.id
+    _cards.push(Card.find_by(board_id: _board_id, za_id: 36))
+    _cards.push(Card.find_by(board_id: _board_id, za_id: 37))
+    _cards.push(Card.find_by(board_id: _board_id, za_id: 38))
+    _cards.push(Card.find_by(board_id: _board_id, za_id: 39))
+    board.cards = _cards
   end
 end
