@@ -24,6 +24,14 @@ CSV.foreach('db/seeds/座の一覧.csv', headers: true) do |row|
   )
 end
 
+CSV.foreach('db/seeds/座の脚本作成時拡張の一覧.csv', headers: true) do |row|
+  ZaExtraForm.create(
+    name: row['拡張名'],
+    za_id: row['座id'],
+    label: row['ラベル']
+  )
+end
+
 CSV.foreach('db/seeds/分類の一覧.csv', headers: true) do |row|
   Category.create(
     name: row['名称'],

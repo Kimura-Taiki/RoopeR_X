@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_17_060745) do
+ActiveRecord::Schema.define(version: 2022_03_07_130634) do
 
   create_table "areas", force: :cascade do |t|
     t.integer "yml"
@@ -153,6 +153,14 @@ ActiveRecord::Schema.define(version: 2022_02_17_060745) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["za_id", "category_id"], name: "index_za_category_attributions_on_za_id_and_category_id", unique: true
+  end
+
+  create_table "za_extra_forms", force: :cascade do |t|
+    t.string "name"
+    t.integer "za_id"
+    t.string "label"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "zas", force: :cascade do |t|

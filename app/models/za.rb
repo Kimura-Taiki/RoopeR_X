@@ -4,7 +4,8 @@ class Za < ApplicationRecord
   has_many :categories, through: :za_category_attributions
   # has_many :chara
   has_many :pawns
-  
+  has_many :za_extra_forms
+
   belongs_to :area
 
   attachment :image
