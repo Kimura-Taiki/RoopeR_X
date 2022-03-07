@@ -30,5 +30,16 @@ class Card < ApplicationRecord
       _card.save
       _card
     end
+
+    def add_by_pawn(board: false, pawn: false)
+      _card = board.cards.build
+      _card.first_area = pawn.za.area
+      _card.current_area = pawn.za.area
+      _card.za = pawn.za
+      _card.position = pawn.position
+      _card.save
+      _card
+      p _card
+    end
   end
 end

@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   # 盤面系統のルーティング
   resources :boards do
     resources :cards, shallow: true
+    patch "update_by_script", on: :member
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
